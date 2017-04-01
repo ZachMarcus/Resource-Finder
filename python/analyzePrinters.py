@@ -28,16 +28,35 @@ class individualPrinter(object):
 class printerStatus(object):
 	def __init__(self, printerListFile):
 		#print()
+		self.printerDicts = {}
+		self.printerInfoDict = {}
 		with open(printerListFile, 'r') as fil:
-			reader = csv.reader(fil)
-			self.printerList = list(list(entry) for entry in csv.reader(fil, delimiter=','))
-			self.printerInfoList = []
+			dictReader = csv.DictReader(fil)
+			for row in dictReader:
+				key = row.pop('IP Address')
+				if key in self.printerDicts.keys():
+					print('IP address appears twice in csv')
+					pass
+				self.printerDicts[key] = row
+			#self.printerList = list(list(entry) for entry in csv.reader(fil, delimiter=','))
+			
 
 	def query(self):
+		count = 0
+		limit = 2
+		for key in self.printerDicts.keys():
+			count = count + 1
+			if count >= limit:
+				return
+			print(key)
+			printer = individualPrinter(key)
+			self.printerInfoDict[key] = printer
+		#print(self.printerDicts.keys()[0])
 		#for i in range(1, len(self.printerList)):
-		for i in range(1, 2):
-			printer = individualPrinter(self.printerList[i][0])
-			self.printerInfoList.append(printer)
+
+		#for i in range(1, 2):
+			#printer = individualPrinter(self.printerList[i][0])
+		#	self.printerInfoList.append(printer)
 
 
 
