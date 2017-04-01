@@ -1,4 +1,4 @@
-
+// Stuff
   var map; 
   function initGeolocation() {
     if (navigator && navigator.geolocation) {
