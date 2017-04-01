@@ -1,9 +1,14 @@
 
+$(document).ready(function(){
+		
+	});
 
   var map; 
   var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
   
-  
+/*
+ * initGeolocation() 
+ */  
   function initGeolocation() {
     if (navigator && navigator.geolocation) {
     var watchId = navigator.geolocation.watchPosition(successCallback, 
@@ -17,9 +22,7 @@
  
   function errorCallback() {}
 
-  $(document).ready(function(){
-		
-	});
+  
   
   
   function successCallback(position) {
@@ -32,11 +35,37 @@
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       map = new google.maps.Map(document.getElementById("map"), myOptions);
-      var marker = new google.maps.Marker({
-    	  position: myLatlng,
-    	  map: map})
+      printerList.forEach(setMarkers);
     }
-    else map.panTo(myLatlng);
+    //else map.panTo(myLatlng);
     
 }
+  
+  function setMarkers(printer, index) {
+	  console.log("LatLon: " + printer)
+	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
+	  var markerPlace = {
+			  location: myLatLng,
+			  query: printer.Description
+	  }
+	  var markerOptions = {
+			  title: printer.Description,
+			  position: myLatLng,
+			  place: markerPlace,
+	    	  map: map
+	  }
+      var marker = new google.maps.Marker(markerOptions)
+	  
+	  // Pop up window with more information about the printers
+	  var windowOptions = {
+		  content: printer.Description,
+		  position: myLatLng
+	  }
+	  var infoWindow = new google.maps.InfoWindow(windowOptions);
+	  
+	  marker.addListener('click', function() {
+		    infoWindow.open(map, marker);
+		  });
+	  
+  }
   
