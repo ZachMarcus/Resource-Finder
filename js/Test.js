@@ -37,14 +37,35 @@ $(document).ready(function(){
       map = new google.maps.Map(document.getElementById("map"), myOptions);
       printerList.forEach(setMarkers);
     }
-    else map.panTo(myLatlng);
+    //else map.panTo(myLatlng);
     
 }
+  
   function setMarkers(printer, index) {
 	  console.log("LatLon: " + printer)
-	  var myLatlng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
-      var marker = new google.maps.Marker({
-    	  position: myLatlng,
-    	  map: map})
+	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
+	  var markerPlace = {
+			  location: myLatLng,
+			  query: printer.Description
+	  }
+	  var markerOptions = {
+			  title: printer.Description,
+			  position: myLatLng,
+			  place: markerPlace,
+	    	  map: map
+	  }
+      var marker = new google.maps.Marker(markerOptions)
+	  
+	  // Pop up window with more information about the printers
+	  var windowOptions = {
+		  content: printer.Description,
+		  position: myLatLng
+	  }
+	  var infoWindow = new google.maps.InfoWindow(windowOptions);
+	  
+	  marker.addListener('click', function() {
+		    infoWindow.open(map, marker);
+		  });
+	  
   }
   
