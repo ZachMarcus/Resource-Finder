@@ -1,7 +1,10 @@
 from flask import Flask, request
 
+from bs4 import BeautifulSoup
+
 import csv
 import requests
+from time import sleep
 
 import threading
 
@@ -25,6 +28,15 @@ class individualPrinter(object):
 
 	def parseResponse(self):
 		print('hi')
+		soup = BeautifulSoup(self.indexResponse.text, "lxml")
+		print(soup.find("span", {"id": "SupplyPLR0"}))
+		self.inkStatus = str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
+		#with open(self.ipAddress + ".html", "w") as fil:
+		#	fil.write(self.indexResponse.text)
+		#self.inkStatus = self.inkStatus.split(">")[1].split("%")[0]
+		print(self.inkStatus)
+
+
 
 
 
@@ -59,6 +71,7 @@ def worker():
 	while(True):
 		allPrinterStatuses = printerStatus("data/printerList.csv")
 		allPrinterStatuses.query()
+		sleep(60)
 
 
 app = Flask(__name__, static_url_path="")
