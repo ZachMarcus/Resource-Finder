@@ -3,6 +3,7 @@ from flask import Flask, request
 import csv
 import requests
 
+import threading
 
 
 class individualPrinter(object):
@@ -50,9 +51,14 @@ class printerStatus(object):
 			count = count + 1
 			if count >= limit:
 				return
-			print(key)
+			#print(key)
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer
+
+def worker():
+	while(True):
+		allPrinterStatuses = printerStatus("data/printerList.csv")
+		allPrinterStatuses.query()
 
 
 app = Flask(__name__, static_url_path="")
@@ -76,6 +82,6 @@ def status_file(path):
 	return app.send_static_file(path)
 
 
-
-mine = printerStatus("data/printerList.csv")
-mine.query()
+threads = []
+t = threading.Thread(target=worker)
+t.start()
