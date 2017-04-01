@@ -1,0 +1,135 @@
+printerList = [
+  {
+    "IP Address": "10.30.10.93",
+    "MAC Address": "9CB6541B187B",
+    "Latitude": 42.337179,
+    "Longitude": -71.090513,
+    "Description": "West C"
+  },
+  {
+    "IP Address": "10.30.10.113",
+    "MAC Address": "480FCFC88A23",
+    "Latitude": 42.337179,
+    "Longitude": -71.090523,
+    "Description": "Snell 1 lobby 4"
+  },
+  {
+    "IP Address": "10.30.10.112",
+    "MAC Address": "308D99ABCF91",
+    "Latitude": 42.337179,
+    "Longitude": -71.090533,
+    "Description": "Snell 1 lobby 3"
+  },
+  {
+    "IP Address": "10.30.10.107",
+    "MAC Address": "480FCFC87A4C",
+    "Latitude": 42.337179,
+    "Longitude": -71.090543,
+    "Description": "Snell 1 lobby 2"
+  },
+  {
+    "IP Address": "10.30.10.116",
+    "MAC Address": "480FCFC87ADD",
+    "Latitude": 42.337179,
+    "Longitude": -71.090553,
+    "Description": "Snell 1 lobby 1"
+  },
+  {
+    "IP Address": "10.30.10.123",
+    "MAC Address": "A08CFD65B90C",
+    "Latitude": 42.337179,
+    "Longitude": -71.090563,
+    "Description": "Snell 1 center 1"
+  },
+  {
+    "IP Address": "10.30.10.126",
+    "MAC Address": "A08CFD65B91F",
+    "Latitude": 42.337179,
+    "Longitude": -71.090573,
+    "Description": "Snell 1 center 2"
+  },
+  {
+    "IP Address": "10.30.10.244",
+    "MAC Address": "009C02022998",
+    "Latitude": 42.337179,
+    "Longitude": -71.090583,
+    "Description": "Snell 2 window"
+  },
+  {
+    "IP Address": "10.30.10.51",
+    "MAC Address": "A0D3C1EA93F0",
+    "Latitude": 42.337179,
+    "Longitude": -71.090593,
+    "Description": "Snell 2 color back 1"
+  },
+  {
+    "IP Address": "10.30.10.52",
+    "MAC Address": "A0D3C1EA931D",
+    "Latitude": 42.337179,
+    "Longitude": -71.090541,
+    "Description": "Snell 2 color back 2"
+  },
+  {
+    "IP Address": "10.30.10.91",
+    "MAC Address": "2C44FD01A57A",
+    "Latitude": 42.337179,
+    "Longitude": -71.090542,
+    "Description": "Snell 2 bw right"
+  },
+  {
+    "IP Address": "10.30.10.54",
+    "MAC Address": "9CB6541BA7E6",
+    "Latitude": 42.337179,
+    "Longitude": -71.090543,
+    "Description": "Stetson West 1"
+  },
+  {
+    "IP Address": "10.30.10.32",
+    "MAC Address": "EC9A74354841",
+    "Latitude": 42.337179,
+    "Longitude": -71.090544,
+    "Description": "Stetson West 2"
+  },
+  {
+    "IP Address": "10.30.10.46",
+    "MAC Address": "EC9A7431CD91",
+    "Latitude": 42.337179,
+    "Longitude": -71.090545,
+    "Description": "Stetson East"
+  },
+  {
+    "IP Address": "10.30.10.94",
+    "MAC Address": "F0921C5FCD48",
+    "Latitude": 42.337179,
+    "Longitude": -71.090546,
+    "Description": "Speare 1"
+  },
+  {
+    "IP Address": "10.30.10.117",
+    "MAC Address": "EC9A7435483E",
+    "Latitude": 42.337179,
+    "Longitude": -71.090547,
+    "Description": "Speare 2"
+  },
+  {
+    "IP Address": "10.30.10.57",
+    "MAC Address": "C4346B16BC9D",
+    "Latitude": 42.337179,
+    "Longitude": -71.090548,
+    "Description": "Marino"
+  },
+  {
+    "IP Address": "10.30.10.64",
+    "MAC Address": "40A8F0B9FE10",
+    "Latitude": 42.337179,
+    "Longitude": -71.090549,
+    "Description": "Willis"
+  },
+  {
+    "IP Address": "10.30.10.47",
+    "MAC Address": "EC9A7432B21E",
+    "Latitude": 42.337179,
+    "Longitude": -71.090551,
+    "Description": "West H"
+  }
+]
