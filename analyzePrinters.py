@@ -12,7 +12,7 @@ class printerStatus(object):
 	def query(self, ipAddress):
 		request = requests.get(ipAddress, verify=False)
 		print(request.status_code)
-		print(request.url)
+		#print(request.url)
 		print(request.text)
 
 
@@ -21,3 +21,7 @@ mine = printerStatus('printerList.csv')
 print(mine.printerList)
 
 mine.query('http://' + mine.printerList[1][0])
+
+
+
+
