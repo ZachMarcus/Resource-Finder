@@ -52,7 +52,8 @@ $(document).ready(function(){
 			  title: printer.Description,
 			  position: myLatLng,
 			  place: markerPlace,
-	    	  map: map
+	    	  map: map,
+	    	  icon: "images/printer.png"
 	  }
       var marker = new google.maps.Marker(markerOptions)
 	  
