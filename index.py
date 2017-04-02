@@ -1,6 +1,6 @@
 
 from bs4 import BeautifulSoup
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from time import sleep
 
 import csv
@@ -18,10 +18,14 @@ class individualPrinter(object):
 		self.inkStatus = None
 		self.paperSupply = None
 		self.productName = None
-		self.deviceDescription = None
+		self.deviceName = None
+		self.deviceLocation = None
 
-		self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False)
-		self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
+		try:
+			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=2.00)
+			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
+		except:
+			pass
 
 		if self.indexResponse.status_code is not 200:
 			print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
@@ -36,7 +40,8 @@ class individualPrinter(object):
 		self.inkStatus = str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
 		deviceSoup = BeautifulSoup(self.deviceResponse.text, "lxml")
 		self.productName = deviceSoup.find("p", {"id": "ProductName"}).string
-		self.deviceDescription = deviceSoup.find("p", {"id": "DeviceName"}).string
+		self.deviceName = deviceSoup.find("p", {"id": "DeviceName"}).string
+		self.deviceLocation = deviceSoup.find("p", {"id": "DeviceLocation"}).string
 		self.inkStatus = int(str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0])
 		isFull = None
 		sheetCapacity = None
@@ -97,11 +102,30 @@ def worker():
 
 
 app = Flask(__name__, static_url_path="")
+allPrinterStatuses = printerStatus("data/printerList.csv")
+allPrinterStatuses.query()
+
 
 
 @app.route("/")
 def run_app():
 	return "Hello, world"
+
+
+@app.route("/api/v1/printers", methods=['GET'])
+def get_printers():
+	printers = []
+	for key in allPrinterStatuses.printerInfoDict:
+		printers.append({
+	'deviceName': allPrinterStatuses.printerInfoDict[key].deviceName,
+	'inkStatus': allPrinterStatuses.printerInfoDict[key].inkStatus,
+	'productName': allPrinterStatuses.printerInfoDict[key].productName,
+	'deviceLocation': allPrinterStatuses.printerInfoDict[key].deviceLocation,
+	'paperSupply': allPrinterStatuses.printerInfoDict[key].paperSupply,
+	'ipAddress': key 
+	})
+	return jsonify({'printers': printers})	
+
 
 
 @app.route("/<path:path>")
