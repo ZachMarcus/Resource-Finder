@@ -147,6 +147,10 @@ class printerStatus(object):
 			self.printerInfoDict[key] = printer
 
 
+
+
+
+
 def worker():
 	"""
 	An extra worker to do all the printer data collection
@@ -158,10 +162,24 @@ def worker():
 		sleep(60)
 
 
+class Seat(object):
+	"""
+	class to store the information from a single printer
+	it's not much more than a way to structure our data
+	"""
+	def __init__(self, seatID):
+		self.seatID = seatID
+		self.available = False
+
+
 app = Flask(__name__, static_url_path="")
 allPrinterStatuses = printerStatus("static/data/PrinterList3.json")
 allPrinterStatuses.query()
 
+seats = []
+seats.append(Seat(0))
+seats.append(Seat(1))
+seats.append(Seat(2))
 
 
 @app.route("/")
@@ -180,8 +198,24 @@ def get_printers():
 	'deviceLocation': allPrinterStatuses.printerInfoDict[key].deviceLocation,
 	'paperSupply': allPrinterStatuses.printerInfoDict[key].paperSupply,
 	}
-	return jsonify({'printers': printers})	
+	return jsonify({'printers': printers})
 
+
+@app.route("/api/v1/seats/<int:seat_id>", methods=['POST'])
+def post_seat(seat_id):
+	seats[seat_id].available = request.json['available']
+	return 'Done', 201
+			
+
+@app.route("/api/v1/seats", methods=['GET'])
+def get_seats():
+	seat_json = []
+	for seat in seats:
+		seat_json.append({
+	'seatID': seat.seatID,
+	'available': seat.available
+	})
+	return jsonify({'seats': seat_json})
 
 
 @app.route("/<path:path>")
