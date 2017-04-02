@@ -1,133 +1,133 @@
 printerList = [
   {
-    "IP Address": "10.30.10.93",
-    "MAC Address": "9CB6541B187B",
+    "ipAddress": "10.30.10.93",
+    "macAddress": "9CB6541B187B",
     "Latitude": "42.337116",
     "Longitude": "-71.092368",
     "Description": "West C"
   },
   {
-    "IP Address": "10.30.10.113",
-    "MAC Address": "480FCFC88A23",
+    "ipAddress": "10.30.10.113",
+    "macAddress": "480FCFC88A23",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 4"
   },
   {
-    "IP Address": "10.30.10.112",
-    "MAC Address": "308D99ABCF91",
+    "ipAddress": "10.30.10.112",
+    "macAddress": "308D99ABCF91",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 3"
   },
   {
-    "IP Address": "10.30.10.107",
-    "MAC Address": "480FCFC87A4C",
+    "ipAddress": "10.30.10.107",
+    "macAddress": "480FCFC87A4C",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 2"
   },
   {
-    "IP Address": "10.30.10.116",
-    "MAC Address": "480FCFC87ADD",
+    "ipAddress": "10.30.10.116",
+    "macAddress": "480FCFC87ADD",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 1"
   },
   {
-    "IP Address": "10.30.10.123",
-    "MAC Address": "A08CFD65B90C",
+    "ipAddress": "10.30.10.123",
+    "macAddress": "A08CFD65B90C",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 center 1"
   },
   {
-    "IP Address": "10.30.10.126",
-    "MAC Address": "A08CFD65B91F",
+    "ipAddress": "10.30.10.126",
+    "macAddress": "A08CFD65B91F",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 1 center 2"
   },
   {
-    "IP Address": "10.30.10.244",
-    "MAC Address": "009C02022998",
+    "ipAddress": "10.30.10.244",
+    "macAddress": "009C02022998",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 2 window"
   },
   {
-    "IP Address": "10.30.10.51",
-    "MAC Address": "A0D3C1EA93F0",
+    "ipAddress": "10.30.10.51",
+    "macAddress": "A0D3C1EA93F0",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 2 color back 1"
   },
   {
-    "IP Address": "10.30.10.52",
-    "MAC Address": "A0D3C1EA931D",
+    "ipAddress": "10.30.10.52",
+    "macAddress": "A0D3C1EA931D",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 2 color back 2"
   },
   {
-    "IP Address": "10.30.10.91",
-    "MAC Address": "2C44FD01A57A",
+    "ipAddress": "10.30.10.91",
+    "macAddress": "2C44FD01A57A",
     "Latitude": "42.338529",
     "Longitude": "-71.087903",
     "Description": "Snell 2 bw right"
   },
   {
-    "IP Address": "10.30.10.54",
-    "MAC Address": "9CB6541BA7E6",
+    "ipAddress": "10.30.10.54",
+    "macAddress": "9CB6541BA7E6",
     "Latitude": "42.340981",
     "Longitude": " -71.090705",
     "Description": "Stetson West 1"
   },
   {
-    "IP Address": "10.30.10.32",
-    "MAC Address": "EC9A74354841",
+    "ipAddress": "10.30.10.32",
+    "macAddress": "EC9A74354841",
     "Latitude": "42.340981",
     "Longitude": " -71.090705",
     "Description": "Stetson West 2"
   },
   {
-    "IP Address": "10.30.10.46",
-    "MAC Address": "EC9A7431CD91",
+    "ipAddress": "10.30.10.46",
+    "macAddress": "EC9A7431CD91",
     "Latitude": "42.341318",
     "Longitude": "-71.090173",
     "Description": "Stetson East"
   },
   {
-    "IP Address": "10.30.10.94",
-    "MAC Address": "F0921C5FCD48",
+    "ipAddress": "10.30.10.94",
+    "macAddress": "F0921C5FCD48",
     "Latitude": "42.340703",
     "Longitude": "-71.089712",
     "Description": "Speare 1"
   },
   {
-    "IP Address": "10.30.10.117",
-    "MAC Address": "EC9A7435483E",
+    "ipAddress": "10.30.10.117",
+    "macAddress": "EC9A7435483E",
     "Latitude": "42.340703",
     "Longitude": "-71.089712",
     "Description": "Speare 2"
   },
   {
-    "IP Address": "10.30.10.57",
-    "MAC Address": "C4346B16BC9D",
+    "ipAddress": "10.30.10.57",
+    "macAddress": "C4346B16BC9D",
     "Latitude": "42.340398",
     "Longitude": "-71.090458",
     "Description": "Marino"
   },
   {
-    "IP Address": "10.30.10.64",
-    "MAC Address": "40A8F0B9FE10",
+    "ipAddress": "10.30.10.64",
+    "macAddress": "40A8F0B9FE10",
     "Latitude": "42.338199",
     "Longitude": "-71.091360",
     "Description": "Willis"
   },
   {
-    "IP Address": "10.30.10.47",
-    "MAC Address": "EC9A7432B21E",
+    "ipAddress": "10.30.10.47",
+    "macAddress": "EC9A7432B21E",
     "Latitude": "42.338672",
     "Longitude": "-71.092028",
     "Description": "West H"

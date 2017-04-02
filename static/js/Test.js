@@ -1,8 +1,3 @@
-
-$(document).ready(function(){
-		
-	});
-
    /*
     * Global variables 
     * 
@@ -12,6 +7,11 @@ $(document).ready(function(){
   var map;
   var myLatLng
   var NUMBER_PRINTERS_REC = 3;
+  var printerStatus;
+  
+  $(document).ready(function(){
+	printerStatus = $http.get("http://127.0.0.1:5000/api/v1/printers")		
+  });
   
 /*
  * initGeolocation()
@@ -149,9 +149,15 @@ $(document).ready(function(){
    */
   function setMarkers(printer, index) {
 	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
+	  printer.status = printerStatus[printers[printer[ipAddress]]]
+	  
+	  var printerQuery = "Printer: " + printer.status["deviceName"] + "\n" 
+	  					+ "Ink Status: " + printer.status["inkStatus"] "\n"
+	  					+ "Max Paper Supply: " + printer.status["paperSupply"]
+	  
 	  var markerPlace = {
 			  location: myLatLng,
-			  query: printer.Description
+			  query: printerQuery
 	  }
 	  var markerOptions = {
 			  title: printer.Description,

@@ -102,7 +102,7 @@ def worker():
 
 
 app = Flask(__name__, static_url_path="")
-allPrinterStatuses = printerStatus("data/printerList.csv")
+allPrinterStatuses = printerStatus("static/data/printerList.csv")
 allPrinterStatuses.query()
 
 
