@@ -8,6 +8,9 @@ import requests
 import threading
 import json
 
+from datetime import datetime
+from io import StringIO
+
 
 class individualPrinter(object):
 	"""
@@ -23,33 +26,39 @@ class individualPrinter(object):
 		self.deviceLocation = None
 
 		try:
-			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=2.00)
-			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
-		
+			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=3.00)
+			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False, timeout=3.00)
+			self.jobResponse = requests.get("http://" + str(self.ipAddress) + "/hp/device/JobLogReport/Index", verify=False, timeout=3.00)
+			
 
 			if self.indexResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
 			if self.deviceResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
+			if self.jobResponse.status_code is not 200:
+				print('Request Failed: ' + str(self.jobResponse.status_code) + ' from ' + self.jobResponse.url)
 
 			self.parseResponse()
 		except:
 			pass
 
+	"""
+	\todo add extra job log status checking
+	"""
 	def parseResponse(self):
 		#print('hi')
-		soup = BeautifulSoup(self.indexResponse.text, "lxml")
-		self.inkStatus = str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
+		indexSoup = BeautifulSoup(self.indexResponse.text, "lxml")
+		self.inkStatus = str(indexSoup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
 		deviceSoup = BeautifulSoup(self.deviceResponse.text, "lxml")
 		self.productName = deviceSoup.find("p", {"id": "ProductName"}).string
 		self.deviceName = deviceSoup.find("p", {"id": "DeviceName"}).string
 		self.deviceLocation = deviceSoup.find("p", {"id": "DeviceLocation"}).string
-		self.inkStatus = int(str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0])
+		self.inkStatus = int(str(indexSoup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0])
 		isFull = None
 		sheetCapacity = None
 		totalCount = 0
 
-		table = str(soup.find("table", {"id": "MediaTable"}).tbody)
+		table = str(indexSoup.find("table", {"id": "MediaTable"}).tbody)
 		for entry in table.split("span class="):
 			if "status" in entry:
 				isFull = "status-full" in entry
@@ -59,6 +68,22 @@ class individualPrinter(object):
 		
 		self.paperSupply = totalCount
 		#print(self.inkStatus, self.paperSupply)
+
+		jobSoup = BeautifulSoup(self.jobResponse.text, "lxml")
+		name = "JobLogName_"
+		user = "JobLogUser_"
+		status = "JobLogStatus_"
+		date = "JobLogData_"
+		numTickets = self.jobResponse.text.count('class="PrintJobTicket">')
+		numRecentTickets = 0
+		for i in range(0, numTickets):
+			time = jobSoup.find("td", {"id": date + str(i)}).string
+			if len(time) < 22:
+				time = time.split(" ")[0] + " 0" + time.split(" ")[1] + " " + time.split(" ")[2]
+			
+			if int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")) * 1000 + 1800 > int(datetime.now().strftime("%s")):
+				numRecentTickets = numRecentTickets + 1
+		print(numRecentTickets)
 
 
 
@@ -72,9 +97,15 @@ class printerStatus(object):
 		self.printerDicts = {}
 		self.printerInfoDict = {}
 		with open(printerListFile, 'r') as fil:
-			data = json.load(fil)["printerList"]
-		for item in data:
-			self.printerDicts[item["IPAddress"]] = item
+			red = fil.read()
+			#print(red)
+			red = red.replace('printerList = [', '{"printerList":[') + "}"
+			io = StringIO(red)
+
+			data = json.load(io)["printerList"]
+			#print(data)
+			for item in data:
+				self.printerDicts[item["IPAddress"]] = item
 			
 
 
