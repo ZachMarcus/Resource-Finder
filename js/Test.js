@@ -10,6 +10,7 @@ $(document).ready(function(){
   var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
   // printerList is an array of Printer Objects
   var map;
+  var myLatLng
   var NUMBER_PRINTERS_REC = 3;
   
 /*
@@ -37,7 +38,7 @@ $(document).ready(function(){
    */
   function successCallback(position) {
 	
-    var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     // To be run the first time the callback is called. (Creates the map object)
     if(map == undefined) {
@@ -84,20 +85,36 @@ $(document).ready(function(){
 	  
 	  console.log("You should go to " + dmResponse.destinationAddresses[dmResponse.sortedElements[0][0].locationIndex]);
 	  
-	  shortList = genShortList(dmResponse);
-	  console.log(shortList);
+	  shortListLocations = genShortList(dmResponse);
+	  console.log("Console List: " );
+	  console.log(shortListLocations);
 	  /* 
        * Get directions to go to the place we want to go. 
-       *//*
+       */
       directionService = new google.maps.DirectionsService();
-      directionService.request = {
-    		  origins:[myLatLng],
-    		  destination: , // Destination (LatLng)
-    		  travelMode: "WALKING",
-    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
-      }
       
-      directionService.route(request:DirectionsRequest, callback:function(DirectionsResult, DirectionsStatus));*/
+      // Plot directions for each address in shortListLocations
+      for (printer in shortListLocations){
+	      // Create Request
+    	  directionService.request = {
+	    		  origin:myLatLng,
+	    		  destination: shortListLocations[printer], // Destination (LatLng)
+	    		  travelMode: "WALKING",
+	    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
+	      }
+	      directionService.route(directionService.request, dsCallback)
+      }
+  }
+  
+  /*
+   * 
+   */
+  function dsCallback(dsResult, dsStatus){
+	  var DirectionsRendererOptions = {
+		  directions: dsResult,
+		  map: map
+	  }
+	  renderer = new google.maps.DirectionsRenderer(DirectionsRendererOptions);
   }
   
   /*
@@ -131,7 +148,6 @@ $(document).ready(function(){
    *  
    */
   function setMarkers(printer, index) {
-	  console.log("LatLon: " + printer)
 	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
 	  var markerPlace = {
 			  location: myLatLng,
@@ -177,9 +193,9 @@ $(document).ready(function(){
  */
   function genShortList(dmResponse){
 	  var locations = [];
-	  for (index in NUMBER_PRINTERS_REC){
+	  for (index = 0; index < NUMBER_PRINTERS_REC; index++){
 		  printer = printerList[dmResponse.sortedElements[0][index].locationIndex];
-		  locations.push(new google.maps.LatLng(printer[index].Latitude, printer[index].Longitude));
+		  locations.push(new google.maps.LatLng(printer.Latitude, printer.Longitude));
 	  }
 	  return locations
   }
