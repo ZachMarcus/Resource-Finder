@@ -114,16 +114,15 @@ def run_app():
 
 @app.route("/api/v1/printers", methods=['GET'])
 def get_printers():
-	printers = []
+	printers = {}
 	for key in allPrinterStatuses.printerInfoDict:
-		printers.append({
+		printers[key] ={
 	'deviceName': allPrinterStatuses.printerInfoDict[key].deviceName,
 	'inkStatus': allPrinterStatuses.printerInfoDict[key].inkStatus,
 	'productName': allPrinterStatuses.printerInfoDict[key].productName,
 	'deviceLocation': allPrinterStatuses.printerInfoDict[key].deviceLocation,
 	'paperSupply': allPrinterStatuses.printerInfoDict[key].paperSupply,
-	'ipAddress': key 
-	})
+	}
 	return jsonify({'printers': printers})	
 
 
