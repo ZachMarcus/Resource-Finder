@@ -19,6 +19,7 @@
     <script src="data/PrinterList3.json"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE"></script>
     <script src="js/Test.js"></script>
+    <script src="js/Seats.js"></script>
     <!-- <script src="js/createPrinterListMenu.js"></script> -->
     
   </head>
@@ -62,9 +63,9 @@
   			<h3 class="page-header margin">Printer Locator</h3>
 	  		<div id="map"></div>
   		</div>
-  		<div class = "col-sm-4 col-md-5">
+  		<div class = "col-sm-4 col-md-5" style="background-color: 0xffffff;" onload="javascript:initSeats()">
   			<h3 class="page-header margin">Seat Locator</h3>
-  			Some Stuff Here
+			<div id = "seatInfo"></div>
   		</div>
     </div>	 
 	</div>
