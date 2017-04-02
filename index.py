@@ -24,19 +24,31 @@ class individualPrinter(object):
 		self.productName = None
 		self.deviceName = None
 		self.deviceLocation = None
+		self.numRecentTickets = None
 
 		try:
 			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=3.00)
 			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False, timeout=3.00)
-			self.jobResponse = requests.get("http://" + str(self.ipAddress) + "/hp/device/JobLogReport/Index", verify=False, timeout=3.00)
 			
-
+			noAuthenticatedPrinters = [
+			"10.30.10.104",
+			"10.30.10.113",
+			"10.30.10.122",
+			"10.30.10.225",
+			"10.30.10.32",
+			"10.30.10.85",
+			"10.30.10.93"]
+			if self.ipAddress in noAuthenticatedPrinters:
+				self.jobResponse = requests.get("http://" + str(self.ipAddress) + "/hp/device/JobLogReport/Index", verify=False, timeout=3.00)
+				if self.jobResponse.status_code is not 200:
+					print('Request Failed: ' + str(self.jobResponse.status_code) + ' from ' + self.jobResponse.url)
+			
 			if self.indexResponse.status_code is not 200:
-				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
+					print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
 			if self.deviceResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
-			if self.jobResponse.status_code is not 200:
-				print('Request Failed: ' + str(self.jobResponse.status_code) + ' from ' + self.jobResponse.url)
+			else:
+				print("Request Succeeded")
 
 			self.parseResponse()
 		except:
@@ -69,21 +81,40 @@ class individualPrinter(object):
 		self.paperSupply = totalCount
 		#print(self.inkStatus, self.paperSupply)
 
-		jobSoup = BeautifulSoup(self.jobResponse.text, "lxml")
-		name = "JobLogName_"
-		user = "JobLogUser_"
-		status = "JobLogStatus_"
-		date = "JobLogData_"
-		numTickets = self.jobResponse.text.count('class="PrintJobTicket">')
-		numRecentTickets = 0
-		for i in range(0, numTickets):
-			time = jobSoup.find("td", {"id": date + str(i)}).string
-			if len(time) < 22:
-				time = time.split(" ")[0] + " 0" + time.split(" ")[1] + " " + time.split(" ")[2]
-			
-			if int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")) * 1000 + 1800 > int(datetime.now().strftime("%s")):
-				numRecentTickets = numRecentTickets + 1
-		print(numRecentTickets)
+
+		noAuthenticatedPrinters = [
+		"10.30.10.104",
+		"10.30.10.113",
+		"10.30.10.122",
+		"10.30.10.225",
+		"10.30.10.32",
+		"10.30.10.85",
+		"10.30.10.93"]
+
+		if self.ipAddress in noAuthenticatedPrinters:
+
+			jobSoup = BeautifulSoup(self.jobResponse.text, "lxml")
+			name = "JobLogName_"
+			user = "JobLogUser_"
+			status = "JobLogStatus_"
+			date = "JobLogData_"
+			for line in self.jobResponse.text:
+				if "PrintJobTicket" in line:
+					print(line)
+			numTickets = self.jobResponse.text.count('PrintJobTicket')
+			if numTickets == 0:
+				self.numRecentTickets = None
+			numRecentTickets = 0
+			for i in range(0, numTickets):
+				time = jobSoup.find("td", {"id": date + str(i)}).string
+				if len(time) < 22:
+					print("bleh")
+					time = time.split(" ")[0] + " 0" + time.split(" ")[1] + " " + time.split(" ")[2]
+				print(int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")))
+				print(int(datetime.now().strftime("%s")))
+				if True or int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")) * 1000 + 1800 > int(datetime.now().strftime("%s")):
+					self.numRecentTickets = numRecentTickets + 1
+
 
 
 
@@ -111,11 +142,11 @@ class printerStatus(object):
 
 	def query(self):
 		count = 0
-		limit = 3
+		limit = 18
 		for key in self.printerDicts.keys():
 			count = count + 1
-			if count >= limit:
-				return
+			#if count >= limit:
+			#	return
 			#print(key)
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer
