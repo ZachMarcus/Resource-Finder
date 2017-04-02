@@ -2,134 +2,134 @@ printerList = [
   {
     "IP Address": "10.30.10.93",
     "MAC Address": "9CB6541B187B",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.337116",
+    "Longitude": "-71.092368",
     "Description": "West C"
   },
   {
     "IP Address": "10.30.10.113",
     "MAC Address": "480FCFC88A23",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 4"
   },
   {
     "IP Address": "10.30.10.112",
     "MAC Address": "308D99ABCF91",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 3"
   },
   {
     "IP Address": "10.30.10.107",
     "MAC Address": "480FCFC87A4C",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 2"
   },
   {
     "IP Address": "10.30.10.116",
     "MAC Address": "480FCFC87ADD",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 lobby 1"
   },
   {
     "IP Address": "10.30.10.123",
     "MAC Address": "A08CFD65B90C",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 center 1"
   },
   {
     "IP Address": "10.30.10.126",
     "MAC Address": "A08CFD65B91F",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 1 center 2"
   },
   {
     "IP Address": "10.30.10.244",
     "MAC Address": "009C02022998",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 2 window"
   },
   {
     "IP Address": "10.30.10.51",
     "MAC Address": "A0D3C1EA93F0",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 2 color back 1"
   },
   {
     "IP Address": "10.30.10.52",
     "MAC Address": "A0D3C1EA931D",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 2 color back 2"
   },
   {
     "IP Address": "10.30.10.91",
     "MAC Address": "2C44FD01A57A",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338529",
+    "Longitude": "-71.087903",
     "Description": "Snell 2 bw right"
   },
   {
     "IP Address": "10.30.10.54",
     "MAC Address": "9CB6541BA7E6",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.340981",
+    "Longitude": " -71.090705",
     "Description": "Stetson West 1"
   },
   {
     "IP Address": "10.30.10.32",
     "MAC Address": "EC9A74354841",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.340981",
+    "Longitude": " -71.090705",
     "Description": "Stetson West 2"
   },
   {
     "IP Address": "10.30.10.46",
     "MAC Address": "EC9A7431CD91",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.341318",
+    "Longitude": "-71.090173",
     "Description": "Stetson East"
   },
   {
     "IP Address": "10.30.10.94",
     "MAC Address": "F0921C5FCD48",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.340703",
+    "Longitude": "-71.089712",
     "Description": "Speare 1"
   },
   {
     "IP Address": "10.30.10.117",
     "MAC Address": "EC9A7435483E",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.340703",
+    "Longitude": "-71.089712",
     "Description": "Speare 2"
   },
   {
     "IP Address": "10.30.10.57",
     "MAC Address": "C4346B16BC9D",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.340398",
+    "Longitude": "-71.090458",
     "Description": "Marino"
   },
   {
     "IP Address": "10.30.10.64",
     "MAC Address": "40A8F0B9FE10",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338199",
+    "Longitude": "-71.091360",
     "Description": "Willis"
   },
   {
     "IP Address": "10.30.10.47",
     "MAC Address": "EC9A7432B21E",
-    "Latitude": "",
-    "Longitude": "",
+    "Latitude": "42.338672",
+    "Longitude": "-71.092028",
     "Description": "West H"
   }
 ]
