@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, request, jsonify
 from time import sleep
 
-import csv
+#import csv
 import requests
 import threading
 import json
@@ -25,15 +25,16 @@ class individualPrinter(object):
 		try:
 			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=2.00)
 			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
+		
+
+			if self.indexResponse.status_code is not 200:
+				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
+			if self.deviceResponse.status_code is not 200:
+				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
+
+			self.parseResponse()
 		except:
 			pass
-
-		if self.indexResponse.status_code is not 200:
-			print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
-		if self.deviceResponse.status_code is not 200:
-			print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
-
-		self.parseResponse()
 
 	def parseResponse(self):
 		#print('hi')
