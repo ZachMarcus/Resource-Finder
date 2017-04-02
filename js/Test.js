@@ -3,11 +3,19 @@ $(document).ready(function(){
 		
 	});
 
-  var map; 
+   /*
+    * Global variables 
+    * 
+    */
   var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
+  // printerList is an array of Printer Objects
+  var map;
+  var NUMBER_PRINTERS_REC = 3;
   
 /*
- * initGeolocation() 
+ * initGeolocation()
+ * Starts the geolocation funcitons. 
+ *  
  */  
   function initGeolocation() {
     if (navigator && navigator.geolocation) {
@@ -20,27 +28,108 @@ $(document).ready(function(){
     }
   }
  
-  function errorCallback() {}
-
+  function errorCallback() {
+	  console.log("Error with locaiton tracking...")
+  }
   
-  
-  
+  /*
+   * Callback function for the navigator.geolocation.watchPosition() function. 
+   */
   function successCallback(position) {
 	
-    var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+    // To be run the first time the callback is called. (Creates the map object)
     if(map == undefined) {
       var myOptions = {
         zoom: 15,
-        center: myLatlng,
+        center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       map = new google.maps.Map(document.getElementById("map"), myOptions);
       printerList.forEach(setMarkers);
+      
+      /* 
+       * Figure out where we want to travel to. 
+       */
+      dms  = new google.maps.DistanceMatrixService();
+      dms.Request = {
+    		  origins:[myLatLng],
+    		  destinations: printerLocations(),// List of Destinations
+    		  travelMode: "WALKING",
+    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
+      }
+      
+      dms.getDistanceMatrix(dms.Request, dmsCallback);
+
+      
+      
     }
     //else map.panTo(myLatlng);
     
 }
+ /* 
+  * Callback for the distance matrix service.
+  * Takes a DistanceMatrixResponse and a DistanceMatrixStatus
+  */
+  function dmsCallback(dmResponse, dmStatus){
+	  console.log("dmResponse");
+	  console.table(dmResponse);
+	  
+	  dmResponse.sortedElements = [];
+	  
+	  for (index in dmResponse.rows) {
+		  dmResponse.sortedElements.push(dmsResponseRowHandler(dmResponse.rows[index]));
+	  }
+	  
+	  console.log("You should go to " + dmResponse.destinationAddresses[dmResponse.sortedElements[0][0].locationIndex]);
+	  
+	  shortList = genShortList(dmResponse);
+	  console.log(shortList);
+	  /* 
+       * Get directions to go to the place we want to go. 
+       *//*
+      directionService = new google.maps.DirectionsService();
+      directionService.request = {
+    		  origins:[myLatLng],
+    		  destination: , // Destination (LatLng)
+    		  travelMode: "WALKING",
+    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
+      }
+      
+      directionService.route(request:DirectionsRequest, callback:function(DirectionsResult, DirectionsStatus));*/
+  }
   
+  /*
+   * Takes in a dmsResponseRow and runs the element handler on each element. Returns a list of sorted elements
+   * 
+   */
+  function dmsResponseRowHandler(row){
+	  for (index in row.elements) {
+		  row.elements[index].locationIndex = index;
+	  }
+	  sortedElements = sortElements(row.elements);
+	  
+	  return sortedElements;
+  }
+  
+  /*
+   * Sorts the list of elements based on the value of the duration object. Closest object will be in the 0 index. 
+   * 
+   * List of Elements => List of Elements 
+   */
+  function sortElements(ElementsList) {
+	  
+	  ElementsList.sort(function(p1, p2){
+		  return p1.duration.value - p2.duration.value});
+	  
+	  return ElementsList;
+  }
+  
+  /*
+   * Takes a printer and places a marker on the map with an infowindow. 
+   *  
+   */
   function setMarkers(printer, index) {
 	  console.log("LatLon: " + printer)
 	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
@@ -68,5 +157,30 @@ $(document).ready(function(){
 		    infoWindow.open(map, marker);
 		  });
 	  
+  }
+  
+  /*
+   * Access the printerList object and produces a list of google.maps.LatLngs. 
+   * printerList => [google.maps.LatLngs]
+   */
+    function printerLocations(){
+  	  var locations = [];
+  	  for (index in printerList){
+  		  locations.push(new google.maps.LatLng(printerList[index].Latitude, printerList[index].Longitude));
+  	  }
+  	  return locations
+    }
+    
+/*
+ *  
+ * 
+ */
+  function genShortList(dmResponse){
+	  var locations = [];
+	  for (index in NUMBER_PRINTERS_REC){
+		  printer = printerList[dmResponse.sortedElements[0][index].locationIndex];
+		  locations.push(new google.maps.LatLng(printer[index].Latitude, printer[index].Longitude));
+	  }
+	  return locations
   }
   
