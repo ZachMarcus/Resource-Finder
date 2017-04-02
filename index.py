@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 from flask import Flask, request, jsonify
 from time import sleep
 
-import csv
+#import csv
 import requests
 import threading
+import json
 
 
 class individualPrinter(object):
@@ -24,17 +25,14 @@ class individualPrinter(object):
 		try:
 			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=2.00)
 			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
-			
 			if self.indexResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
 			if self.deviceResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
-				
 			self.parseResponse()
-			
 		except:
 			pass
-			
+
 	def parseResponse(self):
 		#print('hi')
 		soup = BeautifulSoup(self.indexResponse.text, "lxml")
@@ -71,13 +69,11 @@ class printerStatus(object):
 		self.printerDicts = {}
 		self.printerInfoDict = {}
 		with open(printerListFile, 'r') as fil:
-			dictReader = csv.DictReader(fil)
-			for row in dictReader:
-				key = row.pop('IP Address')
-				if key in self.printerDicts.keys():
-					print('IP address appears twice in csv')
-					pass
-				self.printerDicts[key] = row	
+			data = json.load(fil)["printerList"]
+		for item in data:
+			self.printerDicts[item["IPAddress"]] = item
+			
+
 
 	def query(self):
 		for key in self.printerDicts.keys():
@@ -92,13 +88,13 @@ def worker():
 	Intended to be used as a separate thread
 	"""
 	while(True):
-		allPrinterStatuses = printerStatus("static/data/printerList.csv")
+		allPrinterStatuses = printerStatus("static/data/PrinterList3.json")
 		allPrinterStatuses.query()
 		sleep(60)
 
 
 app = Flask(__name__, static_url_path="")
-allPrinterStatuses = printerStatus("static/data/printerList.csv")
+allPrinterStatuses = printerStatus("static/data/PrinterList3.json")
 allPrinterStatuses.query()
 
 

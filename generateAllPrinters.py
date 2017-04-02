@@ -55,7 +55,7 @@ def getAllPrintersToFile():
         ipBase = "http://"
         #print(ipBase + ip)
         try:
-            response = requests.get(ipBase + ip + "/hp/device/DeviceInformation/View", verify=False, timeout=10.00)
+            response = requests.get(ipBase + ip + "/hp/device/JobLogReport/Index", verify=False, timeout=10.00)
             if response.status_code == 200:
                 with open("./search/" + ip + "Device.html", "w+") as fil:
                     fil.write(response.text)
@@ -93,8 +93,8 @@ def getAllNames(mypath):
 
 
 
-#getAllPrintersToFile()
-getAllNames("./search/")
+getAllPrintersToFile()
+#getAllNames("./search/")
 
 
 
