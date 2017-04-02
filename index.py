@@ -1,15 +1,18 @@
-from flask import Flask, request
 
 from bs4 import BeautifulSoup
+from flask import Flask, request
+from time import sleep
 
 import csv
 import requests
-from time import sleep
-
 import threading
 
 
 class individualPrinter(object):
+	"""
+	class to store the information from a single printer
+	it's not much more than a way to structure our data
+	"""
 	def __init__(self, ip):
 		self.ipAddress = ip
 		self.inkStatus = None
@@ -28,9 +31,8 @@ class individualPrinter(object):
 		self.parseResponse()
 
 	def parseResponse(self):
-		print('hi')
+		#print('hi')
 		soup = BeautifulSoup(self.indexResponse.text, "lxml")
-		print(soup.find("span", {"id": "SupplyPLR0"}))
 		self.inkStatus = str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
 		deviceSoup = BeautifulSoup(self.deviceResponse.text, "lxml")
 		self.productName = deviceSoup.find("p", {"id": "ProductName"}).string
@@ -54,6 +56,11 @@ class individualPrinter(object):
 
 
 class printerStatus(object):
+	"""
+	A class to store the information from all printers on campus
+	not much more than a dictionary of individual printers
+	And a function to go through the list and update our information
+	"""
 	def __init__(self, printerListFile):
 		self.printerDicts = {}
 		self.printerInfoDict = {}
@@ -77,7 +84,12 @@ class printerStatus(object):
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer
 
+
 def worker():
+	"""
+	An extra worker to do all the printer data collection
+	Intended to be used as a separate thread
+	"""
 	while(True):
 		allPrinterStatuses = printerStatus("data/printerList.csv")
 		allPrinterStatuses.query()
@@ -90,14 +102,6 @@ app = Flask(__name__, static_url_path="")
 @app.route("/")
 def run_app():
 	return "Hello, world"
-
-#@app.route("/index.html")
-#def index():
-#	return render_template("index.html")
-
-#@app.route("/index/")
-#def root():
-#	return app;send_static_file("index.html")
 
 
 @app.route("/<path:path>")
