@@ -9,6 +9,12 @@
   var NUMBER_PRINTERS_REC = 3;
   var MAX_NUM_DESTINATIONS = 25;
   var printerStatus = 0;
+  var global_dmResponse = {
+	  "destinationAddresses": [],
+	  "originAddresses": [],
+	  "rows": []
+	  }
+  var lock = false;
   
   $(document).ready(function(){
 	
@@ -84,15 +90,26 @@
   function dmsCallback(dmResponse, dmStatus){
 	  console.log(dmStatus);
 	  console.log(dmResponse);
-	  dmResponse.sortedElements = [];
 	  
-	  for (index in dmResponse.rows) {
-		  dmResponse.sortedElements.push(dmsResponseRowHandler(dmResponse.rows[index]));
+	  
+	  if(!lock){ //Todo: Change to a while loop?
+		  lock = true;
+		  global_dmResponse.destinationAddresses.push.apply(global_dmResponse.destinationAddresses, dmResponse.destinationAddresses);
+		  global_dmResponse.originAddresses.push.apply(global_dmResponse.originAddresses, dmResponse.originAddresses);
+		  global_dmResponse.rows.push.apply(global_dmResponse.rows, dmResponse.rows);
+		  lock = false
 	  }
 	  
-	  console.log("You should go to " + dmResponse.destinationAddresses[dmResponse.sortedElements[0][0].locationIndex]);
 	  
-	  shortListLocations = genShortList(dmResponse);
+	  global_dmResponse.sortedElements = [];
+	  
+	  for (index in global_dmResponse.rows) {
+		  global_dmResponse.sortedElements.push(dmsResponseRowHandler(global_dmResponse.rows[index]));
+	  }
+	  
+	  console.log("You should go to " + global_dmResponse.destinationAddresses[global_dmResponse.sortedElements[0][0].locationIndex]);
+	  
+	  shortListLocations = genShortList(global_dmResponse);
 	  /* 
        * Get directions to go to the place we want to go. 
        */
@@ -143,7 +160,15 @@
   function sortElements(ElementsList) {
 	  
 	  ElementsList.sort(function(p1, p2){
-		  return p1.duration.value - p2.duration.value});
+		  console.log(p1);
+		  console.log(p2);
+		  if (p1.status == "ZERO_RESULTS"){
+			  return 1000;
+		  } else if (p2.status == "ZERO_RESULTS"){
+			  return 1000;
+		  } else {
+			  return p1.duration.value - p2.duration.value;
+			  }})
 	  
 	  return ElementsList;
   }
