@@ -13,7 +13,6 @@ class individualPrinter(object):
 	def __init__(self, ip):
 		self.ipAddress = ip
 		self.inkStatus = None
-		self.inkColor = None
 		self.paperSupply = None
 		self.productName = None
 		self.deviceDescription = None
@@ -36,20 +35,26 @@ class individualPrinter(object):
 		deviceSoup = BeautifulSoup(self.deviceResponse.text, "lxml")
 		self.productName = deviceSoup.find("p", {"id": "ProductName"}).string
 		self.deviceDescription = deviceSoup.find("p", {"id": "DeviceName"}).string
-		print(self.deviceName)
-		print(self.deviceDescription)
-		#with open(self.ipAddress + ".html", "w") as fil:
-		#	fil.write(self.indexResponse.text)
-		#self.inkStatus = self.inkStatus.split(">")[1].split("%")[0]
-		print(self.inkStatus)
+		self.inkStatus = int(str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0])
+		isFull = None
+		sheetCapacity = None
+		totalCount = 0
 
-
+		table = str(soup.find("table", {"id": "MediaTable"}).tbody)
+		for entry in table.split("span class="):
+			if "status" in entry:
+				isFull = "status-full" in entry
+				sheetCapacity = entry.split("td")[2].split(">")[-1][:-2]
+				if isFull and sheetCapacity:
+					totalCount = totalCount + int(sheetCapacity.split(" ")[0])
+		
+		self.paperSupply = totalCount
+		#print(self.inkStatus, self.paperSupply)
 
 
 
 class printerStatus(object):
 	def __init__(self, printerListFile):
-		#print()
 		self.printerDicts = {}
 		self.printerInfoDict = {}
 		with open(printerListFile, 'r') as fil:
@@ -59,13 +64,11 @@ class printerStatus(object):
 				if key in self.printerDicts.keys():
 					print('IP address appears twice in csv')
 					pass
-				self.printerDicts[key] = row
-			#self.printerList = list(list(entry) for entry in csv.reader(fil, delimiter=','))
-			
+				self.printerDicts[key] = row	
 
 	def query(self):
 		count = 0
-		limit = 2
+		limit = 3
 		for key in self.printerDicts.keys():
 			count = count + 1
 			if count >= limit:
