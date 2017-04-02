@@ -91,7 +91,7 @@ def worker():
 	Intended to be used as a separate thread
 	"""
 	while(True):
-		allPrinterStatuses = printerStatus("data/printerList.csv")
+		allPrinterStatuses = printerStatus("static/data/printerList.csv")
 		allPrinterStatuses.query()
 		sleep(60)
 
