@@ -7,6 +7,7 @@
   var map;
   var myLatLng
   var NUMBER_PRINTERS_REC = 3;
+  var MAX_NUM_DESTINATIONS = 25;
   var printerStatus = 0;
   
   $(document).ready(function(){
@@ -60,15 +61,16 @@
        * Figure out where we want to travel to. 
        */
       dms  = new google.maps.DistanceMatrixService();
-      dms.Request = {
-    		  origins:[myLatLng],
-    		  destinations: printerLocations(),// List of Destinations
-    		  travelMode: "WALKING",
-    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
+      for (var i = 0; i < (printerList.length)/MAX_NUM_DESTINATIONS; i++){
+	      dms.Request = {
+	    		  origins:[myLatLng],
+	    		  destinations: printerLocations(i*25),// List of Destinations
+	    		  travelMode: "WALKING",
+	    		  unitSystem: google.maps.UnitSystem.IMPERIAL // Use FREEDOOMM units!
+	      }
+	      
+	      dms.getDistanceMatrix(dms.Request, dmsCallback);
       }
-      
-      dms.getDistanceMatrix(dms.Request, dmsCallback);
-
       
       
     }
@@ -80,7 +82,8 @@
   * Takes a DistanceMatrixResponse and a DistanceMatrixStatus
   */
   function dmsCallback(dmResponse, dmStatus){
-	  
+	  console.log(dmStatus);
+	  console.log(dmResponse);
 	  dmResponse.sortedElements = [];
 	  
 	  for (index in dmResponse.rows) {
@@ -196,10 +199,14 @@
    * Access the printerList object and produces a list of google.maps.LatLngs. 
    * printerList => [google.maps.LatLngs]
    */
-    function printerLocations(){
+    function printerLocations(initIndex){
   	  var locations = [];
-  	  for (index in printerList){
-  		  locations.push(new google.maps.LatLng(printerList[index].Latitude, printerList[index].Longitude));
+  	  var numRuns;
+  	  if((printerList.length - initIndex) > MAX_NUM_DESTINATIONS)
+  		  numRuns = MAX_NUM_DESTINATIONS;
+  	  else numRuns = printerList.length % MAX_NUM_DESTINATIONS
+  	  for (var i = initIndex; i < numRuns + initIndex; i++){
+  		  locations.push(new google.maps.LatLng(printerList[i].Latitude, printerList[i].Longitude));
   	  }
   	  return locations
     }

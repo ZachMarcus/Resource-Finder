@@ -19,7 +19,7 @@ var printerListContainer = "#printerListPanels";
 </div>
 */
 
-for printerCounter in printerList {
+for (printerCounter in printerList) {
 	printer = printerList[printerCounter];
 	var parentTag;
 	parentTag = genDivTag(printer, div, "panel-group", printerListContainer, "panel-group");
@@ -36,6 +36,11 @@ for printerCounter in printerList {
 		div.setAttribute("id", printer.IPAddress + "collapse");
 		div.setText(printer.DeviceName);
 		$(printer.IPAddress + "panel-title").appendChild(div);
+	
+	parentTag = genDivTag(printer, div, "panel-collapse collapse", printer.IPAddress + "panel", "panel-group", "collapse");
+	div = document.createElement("ul");
+		div.setAttribute("class", "list-group");
+		div.setAttribute("id", printer.IPAddress + "list-group")
 
 }
 
