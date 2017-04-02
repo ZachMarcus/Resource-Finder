@@ -1,4 +1,4 @@
-{printerList = [
+printerList = [
 {"IPAddress": "10.30.10.119", "ProductName": "HP LaserJet M606", "DeviceLocation": "White Hall", "DeviceName": "White Hall", "Latitude": "", "Longitude": "", "HumanDescription": ""},
 {"IPAddress": "10.30.10.125", "ProductName": "HP LaserJet M606", "DeviceLocation": "Shillman Hall Left", "DeviceName": "Shillman Hall Left", "Latitude": "", "Longitude": "", "HumanDescription": ""},
 {"IPAddress": "10.30.10.62", "ProductName": "HP LaserJet 600 M603", "DeviceLocation": "Hayden Hall", "DeviceName": "Hayden Hall", "Latitude": "", "Longitude": "", "HumanDescription": ""},
@@ -58,4 +58,3 @@
 {"IPAddress": "10.30.10.91", "ProductName": "HP LaserJet 600 M602", "DeviceLocation": "DMC B&W Left", "DeviceName": "DMC B&W Left", "Latitude": "", "Longitude": "", "HumanDescription": ""},
 {"IPAddress": "10.30.10.57", "ProductName": "HP LaserJet 600 M603", "DeviceLocation": "Marino Center", "DeviceName": "Marino Center", "Latitude": "", "Longitude": "", "HumanDescription": ""}
 ]
-}
