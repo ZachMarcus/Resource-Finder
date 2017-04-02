@@ -157,7 +157,7 @@
 		  console.error("Error: printerStatus not set");
 	  }
 	  //console.log(printer);
-	  printer.status = printerStatus.printers[printer.ipAddress];
+	  printer.status = printerStatus.printers[printer.IPAddress];
 	  
 	  var printerQuery = "Printer: " + printer.status["deviceName"] + "<br>" 
 	  					+ "Ink Status: " + printer.status["inkStatus"] + "<br>"
@@ -168,10 +168,10 @@
 	  
 	  var markerPlace = {
 			  location: myLatLng,
-			  query: printer.Description
+			  query: printer.DeviceLocation 
 	  }
 	  var markerOptions = {
-			  title: printer.Description,
+			  title: printer.DeviceName,
 			  position: myLatLng,
 			  place: markerPlace,
 	    	  map: map,

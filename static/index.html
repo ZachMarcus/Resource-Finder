@@ -16,9 +16,11 @@
 	
 	<link rel="stylesheet" href="css/mystyle.css">
 	
-    <script src="data/PrinterList.json"></script>
+    <script src="data/PrinterList3.json"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE"></script>
     <script src="js/Test.js"></script>
+    <script src="js/createPrinterListMenu.js"></script>
+    
   </head>
   
   <body onload="javascript:initGeolocation()">
@@ -26,7 +28,7 @@
  	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header" id="nav-head">		
-				<a class="navbar-brand">Resource Finder</a>
+				<a class="navbar-brand">Northeastern University Resource Finder</a>
 			</div>
 		</div>
 	</nav>
@@ -34,15 +36,18 @@
 	
 	<div class="container margin-top">
 	<div class = "row">
-  		<div class = "col-sm-4 col-md-3">
-  			<h3 class="page-header margin">Stuff</h3>
-  			Some Stuff Here
+  		<div class = "col-sm-4 col-md-2">
+  			<h3 class="page-header margin">Printer List</h3>
+  			<div id = "printerListPanels">
+	  			<!-- Populated by createPrinterList.js -->
+			</div>
   		</div>
-  		<div class = "col-sm-4 col-md-6">
+  		<div class = "col-sm-4 col-md-5">
+  			<h3 class="page-header margin">Printer Locator</h3>
 	  		<div id="map"></div>
   		</div>
-  		<div class = "col-sm-4 col-md-3">
-  			<h3 class="page-header margin">Stuff</h3>
+  		<div class = "col-sm-4 col-md-5">
+  			<h3 class="page-header margin">Seat Locator</h3>
   			Some Stuff Here
   		</div>
     </div>	 
