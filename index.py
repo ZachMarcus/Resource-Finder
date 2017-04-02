@@ -24,6 +24,7 @@ class individualPrinter(object):
 		self.productName = None
 		self.deviceName = None
 		self.deviceLocation = None
+		self.numRecentTickets = None
 
 		try:
 			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=3.00)
@@ -33,10 +34,12 @@ class individualPrinter(object):
 
 			if self.indexResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
-			if self.deviceResponse.status_code is not 200:
+			elif self.deviceResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
-			if self.jobResponse.status_code is not 200:
+			elif self.jobResponse.status_code is not 200:
 				print('Request Failed: ' + str(self.jobResponse.status_code) + ' from ' + self.jobResponse.url)
+			else:
+				print("Request Succeeded")
 
 			self.parseResponse()
 		except:
@@ -74,16 +77,23 @@ class individualPrinter(object):
 		user = "JobLogUser_"
 		status = "JobLogStatus_"
 		date = "JobLogData_"
-		numTickets = self.jobResponse.text.count('class="PrintJobTicket">')
+		for line in self.jobResponse.text:
+			if "PrintJobTicket" in line:
+				print(line)
+		numTickets = self.jobResponse.text.count('PrintJobTicket')
+		if numTickets == 0:
+			self.numRecentTickets = None
 		numRecentTickets = 0
 		for i in range(0, numTickets):
 			time = jobSoup.find("td", {"id": date + str(i)}).string
 			if len(time) < 22:
+				print("bleh")
 				time = time.split(" ")[0] + " 0" + time.split(" ")[1] + " " + time.split(" ")[2]
-			
-			if int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")) * 1000 + 1800 > int(datetime.now().strftime("%s")):
-				numRecentTickets = numRecentTickets + 1
-		print(numRecentTickets)
+			print(int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")))
+			print(int(datetime.now().strftime("%s")))
+			if True or int(datetime.strptime(time, "%m/%d/%Y %I:%M:%S %p").now().strftime("%s")) * 1000 + 1800 > int(datetime.now().strftime("%s")):
+				self.numRecentTickets = numRecentTickets + 1
+
 
 
 
@@ -111,11 +121,11 @@ class printerStatus(object):
 
 	def query(self):
 		count = 0
-		limit = 3
+		limit = 18
 		for key in self.printerDicts.keys():
 			count = count + 1
-			if count >= limit:
-				return
+			#if count >= limit:
+			#	return
 			#print(key)
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer

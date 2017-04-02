@@ -1,0 +1,592 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US" dir="ltr">
+<head>
+	<title>HP &raquo; Job Log</title>
+	
+	
+    <link media="print" rel="stylesheet" type="text/css" href="/hp/device/theme/onevoice/print.css" />
+	
+	
+	
+
+    	
+    <link rel="stylesheet" type="text/css" href="/hp/device/theme/onevoice/basic.css?2302243_421970" /><link rel="stylesheet" type="text/css" href="/hp/device/theme/onevoice/page-joblogreport.css?2302243_421970" /><script type="text/javascript" src="/hp/device/Scripts/jquery/jquery.js?2302243_421970"></script>
+<script defer="defer" type="text/javascript" src="/hp/device/Scripts/jquery/jquery.tooltip.min.js?2302243_421970"></script>
+<script defer="defer" type="text/javascript" src="/hp/device/Scripts/constrains.engine.js?2302243_421970"></script>
+<script defer="defer" type="text/javascript" src="/hp/device/Scripts/basic.js?2302243_421970"></script>
+<script defer="defer" type="text/javascript" src="/hp/device/scripts/views/JobLogReportView.vm.js?2302243_421970"></script>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+
+
+	
+    
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" href="/hp/device/theme/onevoice/ie7.css?2" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+		<link rel="stylesheet" type="text/css" href="/hp/device/theme/onevoice/ie6.css?2" />
+		<script type="text/javascript" src="/hp/device/Scripts/supersleight.plugin.js?1"></script>
+	<![endif]-->
+</head>
+<body id="PageJobLogReport" class="   index">
+	<div id="header">
+				<div class="product">
+			<div class="user">
+				<div class="user-content">
+									<p id="WelcomeHeader">Welcome</p>
+													</div>
+			</div>
+			<p class="brand" id="brandLink">
+				<a href="http://www.hp.com" rel="external" target="_blank" title="Go to Link to the HP corporate web site: external link">http://www.hp.com</a>
+				<strong class="product">HP LaserJet M806</strong>
+			</p>
+		</div>
+		<div class="info">
+							<p class="device-name" id="HomeDeviceName">HP LaserJet M806</p>
+										<p class="ip-address" id="HomeDeviceIp">10.30.10.104</p>
+					</div>
+	</div>
+
+			<div id="menuTabs">
+					<ul id="mainMenu" class="nav nav-global"><li class="MenuItem current"> <a id="Information" href="/hp/device/DeviceStatus/Index" class="MenuItem current">Information</a> </li><li class="MenuItem"> <a id="SettingsPages" href="/hp/device/Alerts/Index" class="MenuItem">General</a> </li><li class="MenuItem"> <a id="PrintPages" href="/hp/device/OpenFromUsb/Index" class="MenuItem">Print</a> </li><li class="MenuItem"> <a id="TroubleshootingPages" href="/hp/device/ReportsAndTests/Index" class="MenuItem">Troubleshooting</a> </li><li class="MenuItem"> <a id="SecurityPages" href="/hp/device/GeneralSecurity/Index" class="MenuItem">Security</a> </li><li class="MenuItem"> <a id="HPWebServicesPages" href="/hp/webservice" class="MenuItem">HP Web Services</a> </li><li class="MenuItem"> <a id="Networking" href="/hp/device/Networking/Index" class="MenuItem">Networking</a> </li></ul>
+				</div>
+	
+	<div id="page">
+		<div class="columns">
+			<div class="columns-content">
+				<div class="column column-content">
+					<div class="content-body">
+						<div class="page-header">
+							<h1>Job Log</h1>
+													</div>
+
+						<div id="content" class="content form">
+							                                							                                
+                            
+																																				<hr />
+													
+							
+
+
+
+<form action="/hp/device/JobLogReport/Save" method="post" enctype="application/x-www-form-urlencoded">
+    
+        
+                                          
+    <div class="sections ">
+                                                        <div class="section  " id="JobLogReportViewSectionId">
+            <hr />
+                <div class="body">
+                    
+
+
+
+<div class="line joblog">
+  <div class="control grid joblog-grid" id="jobLogList">
+			<div class="head">
+			<div class="control select1 select1-minimal FilterList"><select id="FilterList" name="FilterList"><option value="cJSFilterAll">All Job Types</option><option value="SecurePrintJobTicket">Encrypted Job</option><option value="PrintJobTicket">Print</option></select></div>
+			<span class="button action control"><input type="submit" id="FilterButton" name="FilterButton" value="Filter"/></span>
+		</div>
+        
+    <table id="JobLogTable">
+      <thead>
+        <tr>
+          <th class="command"></th>
+          <th>Job</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_0"><input type="radio" value="090b7f25-a130-4e5f-81ba-f128e9d0a4f4" id="JobLogRadioButton_0" name="JobLogRadioButton" checked="checked"/> Filter </label></div></td>
+          <td id="JobLogName_0">Indifference</td>
+          <td id="JobLogUser_0">NUNET\bresler.s</td>
+          <td id="JobLogStatus_0">Success</td>
+          <td id="JobLogDate_0">04/01/2017 10:55:30 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_1"><input type="radio" value="d3b27b1f-58ab-4425-96e2-a6d95b0a1bf6" id="JobLogRadioButton_1" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_1">Readings on the Revoking Subcontractor.pdf</td>
+          <td id="JobLogUser_1">NUNET\bresler.s</td>
+          <td id="JobLogStatus_1">Success</td>
+          <td id="JobLogDate_1">04/01/2017 10:55:19 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_2"><input type="radio" value="7ac37200-1a83-4371-8ce0-f2728110b324" id="JobLogRadioButton_2" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_2">Readings on the Battle of the Forms pp 157 186.pdf</td>
+          <td id="JobLogUser_2">NUNET\bresler.s</td>
+          <td id="JobLogStatus_2">Success</td>
+          <td id="JobLogDate_2">04/01/2017 10:55:00 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_3"><input type="radio" value="596fd31f-2c06-4d51-880d-01747472a020" id="JobLogRadioButton_3" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_3">Baird & Weisberg 2-207</td>
+          <td id="JobLogUser_3">NUNET\bresler.s</td>
+          <td id="JobLogStatus_3">Success</td>
+          <td id="JobLogDate_3">04/01/2017 10:54:07 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_4"><input type="radio" value="a1e2f74c-fa5e-4fe8-a4fa-041f0662efc1" id="JobLogRadioButton_4" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_4">Microsoft Word - Draft 2</td>
+          <td id="JobLogUser_4">NUNET\bresler.s</td>
+          <td id="JobLogStatus_4">Success</td>
+          <td id="JobLogDate_4">04/01/2017 10:41:45 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_5"><input type="radio" value="d6baa8e6-6900-4594-9c43-6cc978764fdb" id="JobLogRadioButton_5" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_5">Microsoft Word - list of cases</td>
+          <td id="JobLogUser_5">NUNET\zale.k</td>
+          <td id="JobLogStatus_5">Success</td>
+          <td id="JobLogDate_5">04/01/2017 7:37:54 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_6"><input type="radio" value="487c213d-f984-47ea-8b76-7a61cc4cf545" id="JobLogRadioButton_6" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_6">00000003-0000-0000-0000-000000419839</td>
+          <td id="JobLogUser_6">NUNET\sys.mds</td>
+          <td id="JobLogStatus_6">Success</td>
+          <td id="JobLogDate_6">04/01/2017 7:01:21 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_7"><input type="radio" value="bd6fc64f-9a37-4ff8-a258-b965ef34467a" id="JobLogRadioButton_7" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_7">Indifference</td>
+          <td id="JobLogUser_7">NUNET\fitzgerald.be</td>
+          <td id="JobLogStatus_7">Success</td>
+          <td id="JobLogDate_7">04/01/2017 6:28:35 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_8"><input type="radio" value="b68adae0-26a8-440b-a1e4-bc62a63f330e" id="JobLogRadioButton_8" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_8">Readings on the Revoking Subcontractor.pdf</td>
+          <td id="JobLogUser_8">NUNET\fitzgerald.be</td>
+          <td id="JobLogStatus_8">Success</td>
+          <td id="JobLogDate_8">04/01/2017 6:28:30 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_9"><input type="radio" value="f3a390f6-1b7a-4457-be88-68ff35375372" id="JobLogRadioButton_9" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_9">Fischl Syllabus Part 2</td>
+          <td id="JobLogUser_9">NUNET\fitzgerald.be</td>
+          <td id="JobLogStatus_9">Success</td>
+          <td id="JobLogDate_9">04/01/2017 6:28:14 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_10"><input type="radio" value="af24f884-8e85-40bd-9f1f-2e18fc3a545c" id="JobLogRadioButton_10" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_10">NULR K.pdf</td>
+          <td id="JobLogUser_10">NUNET\wolk.ja</td>
+          <td id="JobLogStatus_10">Success</td>
+          <td id="JobLogDate_10">04/01/2017 6:15:03 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_11"><input type="radio" value="aff9743e-8a4e-45f6-9248-2dd53b404c29" id="JobLogRadioButton_11" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_11">ACFrOgAuvtRsi4U3YKLDGSirQ3n8WkEshM9K8y2...QeDGgedSBuMMFljTBC1VAXBfFC0lDtNmZESNU=</td>
+          <td id="JobLogUser_11">NUNET\haydon.t</td>
+          <td id="JobLogStatus_11">Success</td>
+          <td id="JobLogDate_11">04/01/2017 4:13:34 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_12"><input type="radio" value="a40de781-d0a6-4dbd-8f40-5e22ec41f376" id="JobLogRadioButton_12" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_12">Assignment 10</td>
+          <td id="JobLogUser_12">NUNET\haydon.t</td>
+          <td id="JobLogStatus_12">Success</td>
+          <td id="JobLogDate_12">04/01/2017 4:13:10 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_13"><input type="radio" value="ad5eedeb-fada-418b-ba79-8ccc0aa0ec64" id="JobLogRadioButton_13" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_13">View Document</td>
+          <td id="JobLogUser_13">NUNET\bresler.s</td>
+          <td id="JobLogStatus_13">Success</td>
+          <td id="JobLogDate_13">04/01/2017 12:59:44 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_14"><input type="radio" value="a858ca68-f4b5-4924-a9e5-448ed3de3e86" id="JobLogRadioButton_14" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_14">Print 12:58 PM</td>
+          <td id="JobLogUser_14">ALICIA ROSITA SELMAN</td>
+          <td id="JobLogStatus_14">Success</td>
+          <td id="JobLogDate_14">04/01/2017 12:58:29 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_15"><input type="radio" value="d8d870b3-b45c-4266-b53c-5612203301af" id="JobLogRadioButton_15" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_15">Microsoft Word - Miranda Motion</td>
+          <td id="JobLogUser_15">LAPTOP-1C8G6JUC\Kaire D. Colwell</td>
+          <td id="JobLogStatus_15">Success</td>
+          <td id="JobLogDate_15">04/01/2017 12:26:48 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_16"><input type="radio" value="d45dbc54-feb6-420a-8581-24bd6d4b4c6d" id="JobLogRadioButton_16" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_16">Microsoft Word - Miranda Motion</td>
+          <td id="JobLogUser_16">LAPTOP-1C8G6JUC\Kaire D. Colwell</td>
+          <td id="JobLogStatus_16">Success</td>
+          <td id="JobLogDate_16">04/01/2017 12:20:23 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_17"><input type="radio" value="f5e4c50e-1cb6-464b-89c0-a112c435bd00" id="JobLogRadioButton_17" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_17">Microsoft Word - Opposition (Sample #1) (1)</td>
+          <td id="JobLogUser_17">LAPTOP-1C8G6JUC\Kaire D. Colwell</td>
+          <td id="JobLogStatus_17">Success</td>
+          <td id="JobLogDate_17">03/31/2017 11:37:50 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_18"><input type="radio" value="d69804a3-df5e-49b2-a8af-00b4ebce3724" id="JobLogRadioButton_18" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_18">Microsoft Word - Opposition (Sample #2)</td>
+          <td id="JobLogUser_18">LAPTOP-1C8G6JUC\Kaire D. Colwell</td>
+          <td id="JobLogStatus_18">Success</td>
+          <td id="JobLogDate_18">03/31/2017 11:37:40 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_19"><input type="radio" value="d1f6384d-df7b-4075-aa78-ee7536be2234" id="JobLogRadioButton_19" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_19">Microsoft Word - Opposition (Sample #1) (1)</td>
+          <td id="JobLogUser_19">LAPTOP-1C8G6JUC\Kaire D. Colwell</td>
+          <td id="JobLogStatus_19">Success</td>
+          <td id="JobLogDate_19">03/31/2017 11:37:29 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_20"><input type="radio" value="8ecb94c5-c9d2-48a5-8a80-4a4f2b2dcb75" id="JobLogRadioButton_20" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_20">00000003-0000-0000-0000-000000419143</td>
+          <td id="JobLogUser_20">NUNET\sys.mds</td>
+          <td id="JobLogStatus_20">Success</td>
+          <td id="JobLogDate_20">03/31/2017 7:29:14 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_21"><input type="radio" value="de2aa925-7c11-4857-857c-89998413428e" id="JobLogRadioButton_21" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_21">00000003-0000-0000-0000-000000419133</td>
+          <td id="JobLogUser_21">NUNET\sys.mds</td>
+          <td id="JobLogStatus_21">Success</td>
+          <td id="JobLogDate_21">03/31/2017 7:18:19 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_22"><input type="radio" value="8080d76e-7de0-4628-b1bf-eda3ef5c8c1d" id="JobLogRadioButton_22" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_22">Mailbox Rule Worksheet</td>
+          <td id="JobLogUser_22">NUNET\martinez.alexa</td>
+          <td id="JobLogStatus_22">Success</td>
+          <td id="JobLogDate_22">03/31/2017 7:05:50 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_23"><input type="radio" value="c93fb99c-fe00-43c6-be59-87c53f0e063a" id="JobLogRadioButton_23" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_23">Caldwell v Cline</td>
+          <td id="JobLogUser_23">NUNET\martinez.alexa</td>
+          <td id="JobLogStatus_23">Success</td>
+          <td id="JobLogDate_23">03/31/2017 7:05:46 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_24"><input type="radio" value="841c7918-3332-4f8b-984a-207df8b32b59" id="JobLogRadioButton_24" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_24">two views of mbr</td>
+          <td id="JobLogUser_24">NUNET\martinez.alexa</td>
+          <td id="JobLogStatus_24">Success</td>
+          <td id="JobLogDate_24">03/31/2017 7:05:42 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_25"><input type="radio" value="af2c1799-6ce7-436a-b5df-8fea6e7eb84a" id="JobLogRadioButton_25" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_25">Readings on the Battle of the Forms pp 157 186.pdf</td>
+          <td id="JobLogUser_25">NUNET\salim.k</td>
+          <td id="JobLogStatus_25">Success</td>
+          <td id="JobLogDate_25">03/31/2017 4:06:52 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_26"><input type="radio" value="711ea823-f2c4-44f2-b925-a3b4d6f6e6ff" id="JobLogRadioButton_26" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_26">Baird & Weisberg 2-207</td>
+          <td id="JobLogUser_26">NUNET\salim.k</td>
+          <td id="JobLogStatus_26">Success</td>
+          <td id="JobLogDate_26">03/31/2017 4:06:12 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_27"><input type="radio" value="dddc6f25-cb98-4227-b032-56daa6b87c42" id="JobLogRadioButton_27" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_27">Indifference</td>
+          <td id="JobLogUser_27">NUNET\salim.k</td>
+          <td id="JobLogStatus_27">Success</td>
+          <td id="JobLogDate_27">03/31/2017 4:06:04 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_28"><input type="radio" value="a50346f4-69af-476b-accf-bb4698da41fa" id="JobLogRadioButton_28" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_28">Readings on the Revoking Subcontractor.pdf</td>
+          <td id="JobLogUser_28">NUNET\salim.k</td>
+          <td id="JobLogStatus_28">Success</td>
+          <td id="JobLogDate_28">03/31/2017 4:05:56 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_29"><input type="radio" value="55cfe9d7-58a9-4c55-a8ad-ce4cb9d14521" id="JobLogRadioButton_29" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_29">Mid-South Packers</td>
+          <td id="JobLogUser_29">NUNET\salim.k</td>
+          <td id="JobLogStatus_29">Success</td>
+          <td id="JobLogDate_29">03/31/2017 4:05:25 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_30"><input type="radio" value="76cf646d-5d6b-48e2-aa14-80a21b59aa32" id="JobLogRadioButton_30" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_30">00000003-0000-0000-0000-000000418626</td>
+          <td id="JobLogUser_30">NUNET\sys.mds</td>
+          <td id="JobLogStatus_30">Success</td>
+          <td id="JobLogDate_30">03/31/2017 3:33:27 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_31"><input type="radio" value="ae061e13-62ad-40ca-877b-192f4ae902c3" id="JobLogRadioButton_31" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_31">00000003-0000-0000-0000-000000418625</td>
+          <td id="JobLogUser_31">NUNET\sys.mds</td>
+          <td id="JobLogStatus_31">Success</td>
+          <td id="JobLogDate_31">03/31/2017 3:33:22 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_32"><input type="radio" value="4a90151f-361e-41e0-b0f2-6589349f20eb" id="JobLogRadioButton_32" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_32">00000003-0000-0000-0000-000000418622</td>
+          <td id="JobLogUser_32">NUNET\sys.mds</td>
+          <td id="JobLogStatus_32">Success</td>
+          <td id="JobLogDate_32">03/31/2017 3:33:20 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_33"><input type="radio" value="aeff3f38-f58a-4663-b543-2524e4fb52c3" id="JobLogRadioButton_33" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_33">00000003-0000-0000-0000-000000418624</td>
+          <td id="JobLogUser_33">NUNET\sys.mds</td>
+          <td id="JobLogStatus_33">Success</td>
+          <td id="JobLogDate_33">03/31/2017 3:32:54 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_34"><input type="radio" value="fb87339c-b2cf-4b0d-9fff-3e246970d798" id="JobLogRadioButton_34" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_34">00000003-0000-0000-0000-000000418623</td>
+          <td id="JobLogUser_34">NUNET\sys.mds</td>
+          <td id="JobLogStatus_34">Success</td>
+          <td id="JobLogDate_34">03/31/2017 3:32:47 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_35"><input type="radio" value="1ac1f24d-689d-43e1-a4e1-060a3756b8b2" id="JobLogRadioButton_35" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_35">Print 3:26 PM</td>
+          <td id="JobLogUser_35">JONATHAN HERRICK</td>
+          <td id="JobLogStatus_35">Success</td>
+          <td id="JobLogDate_35">03/31/2017 3:26:46 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_36"><input type="radio" value="c53e34ae-15c4-4e56-9360-87588e73e375" id="JobLogRadioButton_36" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_36">McCulloch</td>
+          <td id="JobLogUser_36">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_36">Success</td>
+          <td id="JobLogDate_36">03/31/2017 3:23:47 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_37"><input type="radio" value="87b16457-e725-48ac-ae8f-c6c3aeaafff1" id="JobLogRadioButton_37" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_37">00000003-0000-0000-0000-000000418322</td>
+          <td id="JobLogUser_37">NUNET\sys.mds</td>
+          <td id="JobLogStatus_37">Success</td>
+          <td id="JobLogDate_37">03/31/2017 2:04:27 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_38"><input type="radio" value="45adc917-4f29-40a2-94ae-5af69acc543f" id="JobLogRadioButton_38" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_38">00000003-0000-0000-0000-000000418319</td>
+          <td id="JobLogUser_38">NUNET\sys.mds</td>
+          <td id="JobLogStatus_38">Success</td>
+          <td id="JobLogDate_38">03/31/2017 2:04:12 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_39"><input type="radio" value="a3eec601-c1bd-418e-a05d-4f21f0248f49" id="JobLogRadioButton_39" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_39">Fischl Syllabus Part 2</td>
+          <td id="JobLogUser_39">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_39">Success</td>
+          <td id="JobLogDate_39">03/31/2017 1:54:08 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_40"><input type="radio" value="f47416e0-f421-4026-b43d-712868b9a3af" id="JobLogRadioButton_40" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_40">Readings on the Revoking Subcontractor.pdf</td>
+          <td id="JobLogUser_40">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_40">Success</td>
+          <td id="JobLogDate_40">03/31/2017 1:54:00 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_41"><input type="radio" value="25d07b62-2971-4e77-b114-13dd6ba09d9b" id="JobLogRadioButton_41" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_41">Indifference</td>
+          <td id="JobLogUser_41">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_41">Success</td>
+          <td id="JobLogDate_41">03/31/2017 1:53:46 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_42"><input type="radio" value="d4daba9d-17cf-41a7-832d-d18aa4f99118" id="JobLogRadioButton_42" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_42">Baird & Weisberg 2-207</td>
+          <td id="JobLogUser_42">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_42">Success</td>
+          <td id="JobLogDate_42">03/31/2017 1:53:38 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_43"><input type="radio" value="7a9d7e5c-d75c-4ff5-aae7-819e6387dd8e" id="JobLogRadioButton_43" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_43">Readings on the Battle of the Forms pp 157 186.pdf</td>
+          <td id="JobLogUser_43">NUNET\sardinas.e</td>
+          <td id="JobLogStatus_43">Success</td>
+          <td id="JobLogDate_43">03/31/2017 1:53:29 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_44"><input type="radio" value="985282e0-1948-4832-a738-0263b11c2727" id="JobLogRadioButton_44" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_44">Print 1:33 PM</td>
+          <td id="JobLogUser_44">MAYA FE HOLZHAUER</td>
+          <td id="JobLogStatus_44">Success</td>
+          <td id="JobLogDate_44">03/31/2017 1:34:06 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_45"><input type="radio" value="74193e22-09cb-47a1-a53b-ecb1eac33bfb" id="JobLogRadioButton_45" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_45">Microsoft Word - Draft</td>
+          <td id="JobLogUser_45">NUNET\bresler.s</td>
+          <td id="JobLogStatus_45">Success</td>
+          <td id="JobLogDate_45">03/31/2017 1:03:40 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_46"><input type="radio" value="5ac5ef39-5d78-4fea-9bbe-3db7a43a8b51" id="JobLogRadioButton_46" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_46">00000003-0000-0000-0000-000000417952</td>
+          <td id="JobLogUser_46">NUNET\sys.mds</td>
+          <td id="JobLogStatus_46">Success</td>
+          <td id="JobLogDate_46">03/31/2017 12:19:04 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_47"><input type="radio" value="ed83634b-c670-41cb-aacb-02f2018c2995" id="JobLogRadioButton_47" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_47">00000003-0000-0000-0000-000000417951</td>
+          <td id="JobLogUser_47">NUNET\sys.mds</td>
+          <td id="JobLogStatus_47">Success</td>
+          <td id="JobLogDate_47">03/31/2017 12:18:56 PM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_48"><input type="radio" value="22bda684-b197-4341-920b-90f4e32c1153" id="JobLogRadioButton_48" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_48">00000003-0000-0000-0000-000000417888</td>
+          <td id="JobLogUser_48">NUNET\sys.mds</td>
+          <td id="JobLogStatus_48">Success</td>
+          <td id="JobLogDate_48">03/31/2017 11:51:21 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_49"><input type="radio" value="c8696c96-6e23-47dc-a969-ab327088e2db" id="JobLogRadioButton_49" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_49">Petterson</td>
+          <td id="JobLogUser_49">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_49">Success</td>
+          <td id="JobLogDate_49">03/31/2017 11:44:30 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_50"><input type="radio" value="b32e3b1c-4cb7-4a44-85ac-268cc3c667eb" id="JobLogRadioButton_50" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_50">Mid-South Packers</td>
+          <td id="JobLogUser_50">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_50">Success</td>
+          <td id="JobLogDate_50">03/31/2017 11:44:18 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_51"><input type="radio" value="97e144bc-9d1b-4c66-9700-a3b7ee05c64c" id="JobLogRadioButton_51" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_51">two views of mbr</td>
+          <td id="JobLogUser_51">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_51">Success</td>
+          <td id="JobLogDate_51">03/31/2017 11:44:09 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_52"><input type="radio" value="db9e2bfd-9a30-4dc0-9b05-b1a51f10f062" id="JobLogRadioButton_52" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_52">two views of mbr</td>
+          <td id="JobLogUser_52">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_52">Success</td>
+          <td id="JobLogDate_52">03/31/2017 11:43:50 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_53"><input type="radio" value="61e8351b-ce6e-4382-9288-ee0f5aea6dbe" id="JobLogRadioButton_53" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_53">Caldwell v Cline</td>
+          <td id="JobLogUser_53">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_53">Success</td>
+          <td id="JobLogDate_53">03/31/2017 11:43:29 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_54"><input type="radio" value="6c66266e-5c69-42ff-9feb-80276d94c2dc" id="JobLogRadioButton_54" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_54">Reading on Unilateral Contracts (1).pdf</td>
+          <td id="JobLogUser_54">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_54">Success</td>
+          <td id="JobLogDate_54">03/31/2017 11:43:04 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_55"><input type="radio" value="a9cf0eb4-2d68-4065-a052-a5b59705042a" id="JobLogRadioButton_55" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_55">Allegheny</td>
+          <td id="JobLogUser_55">DESKTOP-11QDI5M\Rieko Shepherd</td>
+          <td id="JobLogStatus_55">Success</td>
+          <td id="JobLogDate_55">03/31/2017 11:42:32 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_56"><input type="radio" value="6df8a368-62c2-4c18-9422-7fecb1f47b1b" id="JobLogRadioButton_56" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_56">00000003-0000-0000-0000-000000417876</td>
+          <td id="JobLogUser_56">NUNET\sys.mds</td>
+          <td id="JobLogStatus_56">Success</td>
+          <td id="JobLogDate_56">03/31/2017 11:41:49 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_57"><input type="radio" value="abd9d805-5533-46f1-972f-5942ca82981e" id="JobLogRadioButton_57" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_57">00000003-0000-0000-0000-000000417875</td>
+          <td id="JobLogUser_57">NUNET\sys.mds</td>
+          <td id="JobLogStatus_57">Success</td>
+          <td id="JobLogDate_57">03/31/2017 11:41:26 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_58"><input type="radio" value="7087cbae-66f4-4c18-9c03-1282bd11345d" id="JobLogRadioButton_58" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_58">00000003-0000-0000-0000-000000417874</td>
+          <td id="JobLogUser_58">NUNET\sys.mds</td>
+          <td id="JobLogStatus_58">Success</td>
+          <td id="JobLogDate_58">03/31/2017 11:41:16 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_59"><input type="radio" value="21998dfc-e66c-43a5-a63a-9eff2d7aed2e" id="JobLogRadioButton_59" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_59">Print 10:52 AM</td>
+          <td id="JobLogUser_59">Guest</td>
+          <td id="JobLogStatus_59">Success</td>
+          <td id="JobLogDate_59">03/31/2017 10:52:54 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_60"><input type="radio" value="ca12156d-7afa-49a0-afba-59dc8212f308" id="JobLogRadioButton_60" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_60">Print 10:52 AM</td>
+          <td id="JobLogUser_60">Guest</td>
+          <td id="JobLogStatus_60">Success</td>
+          <td id="JobLogDate_60">03/31/2017 10:52:45 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_61"><input type="radio" value="a1421657-4bf7-4a90-9de6-d269b2099151" id="JobLogRadioButton_61" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_61">Print 10:52 AM</td>
+          <td id="JobLogUser_61">KELLY COOKE</td>
+          <td id="JobLogStatus_61">Success</td>
+          <td id="JobLogDate_61">03/31/2017 10:52:37 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_62"><input type="radio" value="4af39e72-e521-4ead-92d4-93ace0f08565" id="JobLogRadioButton_62" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_62">Print 10:52 AM</td>
+          <td id="JobLogUser_62">Guest</td>
+          <td id="JobLogStatus_62">Success</td>
+          <td id="JobLogDate_62">03/31/2017 10:52:21 AM</td>
+        </tr>
+                        <tr class="PrintJobTicket">
+        										  <td class="command" id="JobLogSelection"><div class="control radio JobLogRadioButton"><label for="JobLogRadioButton_63"><input type="radio" value="f9fc939e-9ac9-4ecc-8d72-dc90639b3852" id="JobLogRadioButton_63" name="JobLogRadioButton"/> Filter </label></div></td>
+          <td id="JobLogName_63">Print 10:52 AM</td>
+          <td id="JobLogUser_63">KELLY COOKE</td>
+          <td id="JobLogStatus_63">Success</td>
+          <td id="JobLogDate_63">03/31/2017 10:52:18 AM</td>
+        </tr>
+                      </tbody>
+    </table>
+  </div>
+  <div class="buttons">
+    <span class="button action control"><input type="submit" id="ViewDetailsButton" name="ViewDetailsButton" value="View Details"/></span>
+    <span class="button action control"><input type="submit" id="ExportAllButton" name="ExportAllButton" value="Export..."/></span>
+    <span class="button action control"><input type="submit" id="RefreshButton" name="RefreshButton" value="Refresh"/></span>
+  </div>
+</div>
+
+<input type="hidden" id="IsJSEnabled" name="IsJSEnabled" value="false"/>
+                    </div>
+        </div>
+                            </div>
+        
+             
+</form>
+						</div>
+					</div>
+				</div>
+				<hr />
+
+									<div class="column column-menu">
+												
+													<ul id="localMenu" class="nav nav-local"><li class="MenuItem"> <a id="DeviceStatus" href="/hp/device/DeviceStatus/Index" class="MenuItem">Device Status</a> </li><li class="MenuItem current"> <a id="JobLogReport" href="/hp/device/JobLogReport/Index" class="MenuItem current">Job Log</a> </li><li class="MenuItem"> <a id="InternalPages_Index_ConfigurationPage" href="/hp/device/InternalPages/Index?id=ConfigurationPage" class="MenuItem">Configuration Page</a> </li><li class="MenuItem"> <a id="InternalPages_Index_SuppliesStatus" href="/hp/device/InternalPages/Index?id=SuppliesStatus" class="MenuItem">Supplies Status Page</a> </li><li class="MenuItem"> <a id="InternalPages_Index_EventLogPage" href="/hp/device/InternalPages/Index?id=EventLogPage" class="MenuItem">Event Log Page</a> </li><li class="MenuItem"> <a id="InternalPages_Index_UsagePage" href="/hp/device/InternalPages/Index?id=UsagePage" class="MenuItem">Usage Page</a> </li><li class="MenuItem"> <a id="DeviceInformation_View" href="/hp/device/DeviceInformation/View" class="MenuItem">Device Information</a> </li><li class="MenuItem"> <a id="ControlPanelSnapshot" href="/hp/device/ControlPanelSnapshot/Index" class="MenuItem">Control Panel Snapshot</a> </li><li class="MenuItem"> <a id="Print" href="/hp/device/Print/Index" class="MenuItem">Print</a> </li><li class="MenuItem"> <a id="PrintInternalPages" href="/hp/device/PrintInternalPages/Index" class="MenuItem">Printable Reports and Pages</a> </li></ul>
+						
+						<div class="block other-links">
+  <h3>Other Links</h3>
+    <div class="body">
+      <ul>
+        <li><a id="OtherLinksList_0" href="/hp/device/InstantSupport/Index" rel="external" target="_blank">HP Instant Support</a></li>
+        <li><a id="OtherLinksList_1" href="/hp/device/ShopForSupplies/Index" rel="external" target="_blank">Shop for Supplies</a></li>
+        <li><a id="OtherLinksList_2" href="http://h20180.www2.hp.com/apps/Nav?h_lang=en&h_cc=us&h_product=D7P69A&h_page=hpcom&h_pagetype=s-001&lang=en&cc=us&h_client=s-a-e001-1" rel="external" target="_blank">Product Support</a></li>
+    </ul>
+  </div>
+</div>					</div>
+							</div>
+		</div>
+		<hr />
+	</div>
+</body>
+</html>
