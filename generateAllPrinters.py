@@ -73,7 +73,7 @@ def getAllNames(mypath):
         with open(mypath + f, "rb") as fil:
             theSoup = BeautifulSoup(fil, "lxml")
             temp_dict = dict()
-            temp_dict["IP Address"] = f.replace("Device.html", "")
+            temp_dict["IPAddress"] = f.replace("Device.html", "")
             temp_dict["DeviceName"] = theSoup.find("p", {"id": "DeviceName"}).string
             temp_dict["DeviceLocation"] = theSoup.find("p", {"id": "DeviceLocation"}).string
             temp_dict["ProductName"] = theSoup.find("p", {"id": "ProductName"}).string
@@ -81,10 +81,14 @@ def getAllNames(mypath):
     #print(dic)
 
     with open("PrinterList3.json", "w+") as fil:
+        fil.write("printerList = [\n")
         for key in dic.keys():
         #    print(key + ": " + str(dic[key]))
-            fil.write(str(dic[key]).replace("'", "\"").replace("None", "\"None\""))
-            fil.write("\n")
+            temp = str(dic[key]).replace("'", "\"").replace("None", "\"None\"")
+            temp = temp[:-1] + ', "Latitude": "", "Longitude": "", "HumanDescription": ""}'
+            fil.write(temp)
+            fil.write(",\n")
+
 
 
 
