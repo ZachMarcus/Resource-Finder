@@ -15,6 +15,8 @@ class individualPrinter(object):
 		self.inkStatus = None
 		self.inkColor = None
 		self.paperSupply = None
+		self.productName = None
+		self.deviceDescription = None
 
 		self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False)
 		self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
@@ -31,6 +33,11 @@ class individualPrinter(object):
 		soup = BeautifulSoup(self.indexResponse.text, "lxml")
 		print(soup.find("span", {"id": "SupplyPLR0"}))
 		self.inkStatus = str(soup.find("span", {"id": "SupplyPLR0"})).split(">")[1].split("%")[0]
+		deviceSoup = BeautifulSoup(self.deviceResponse.text, "lxml")
+		self.productName = deviceSoup.find("p", {"id": "ProductName"}).string
+		self.deviceDescription = deviceSoup.find("p", {"id": "DeviceName"}).string
+		print(self.deviceName)
+		print(self.deviceDescription)
 		#with open(self.ipAddress + ".html", "w") as fil:
 		#	fil.write(self.indexResponse.text)
 		#self.inkStatus = self.inkStatus.split(">")[1].split("%")[0]
