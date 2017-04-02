@@ -1,7 +1,11 @@
 body,html {
 	height:100%;
 }
-
+.margin-top {
+	margin-top: 50px;
+}
 #map {
-	height: 10px;
+	margin-top: 100px;
+	height: 300px;
+	width: 100%;
 }

@@ -7,10 +7,10 @@
   var map;
   var myLatLng
   var NUMBER_PRINTERS_REC = 3;
-  var printerStatus;
+  var printerStatus = 0;
   
   $(document).ready(function(){
-	printerStatus = $http.get("http://127.0.0.1:5000/api/v1/printers")		
+	
   });
   
 /*
@@ -19,6 +19,12 @@
  *  
  */  
   function initGeolocation() {
+	  console.log("Hello world");	
+	  
+	  $.getJSON("http://127.0.0.1:5000/api/v1/printers", function(data) {
+		    printerStatus = data;
+		});
+	
     if (navigator && navigator.geolocation) {
     var watchId = navigator.geolocation.watchPosition(successCallback, 
                                                       errorCallback,
@@ -74,8 +80,6 @@
   * Takes a DistanceMatrixResponse and a DistanceMatrixStatus
   */
   function dmsCallback(dmResponse, dmStatus){
-	  console.log("dmResponse");
-	  console.table(dmResponse);
 	  
 	  dmResponse.sortedElements = [];
 	  
@@ -86,8 +90,6 @@
 	  console.log("You should go to " + dmResponse.destinationAddresses[dmResponse.sortedElements[0][0].locationIndex]);
 	  
 	  shortListLocations = genShortList(dmResponse);
-	  console.log("Console List: " );
-	  console.log(shortListLocations);
 	  /* 
        * Get directions to go to the place we want to go. 
        */
@@ -149,15 +151,24 @@
    */
   function setMarkers(printer, index) {
 	  var myLatLng = new google.maps.LatLng(printer.Latitude, printer.Longitude);
-	  printer.status = printerStatus[printers[printer[ipAddress]]]
+	  //console.log(printerStatus);
 	  
-	  var printerQuery = "Printer: " + printer.status["deviceName"] + "\n" 
-	  					+ "Ink Status: " + printer.status["inkStatus"] "\n"
+	  if(printerStatus == 0){
+		  console.error("Error: printerStatus not set");
+	  }
+	  //console.log(printer);
+	  printer.status = printerStatus.printers[printer.ipAddress];
+	  
+	  var printerQuery = "Printer: " + printer.status["deviceName"] + "<br>" 
+	  					+ "Ink Status: " + printer.status["inkStatus"] + "<br>"
 	  					+ "Max Paper Supply: " + printer.status["paperSupply"]
+	  
+	  //console.log("Printer Query: ");
+	  //console.log(printerQuery);
 	  
 	  var markerPlace = {
 			  location: myLatLng,
-			  query: printerQuery
+			  query: printer.Description
 	  }
 	  var markerOptions = {
 			  title: printer.Description,
@@ -170,7 +181,7 @@
 	  
 	  // Pop up window with more information about the printers
 	  var windowOptions = {
-		  content: printer.Description,
+		  content: printerQuery,
 		  position: myLatLng
 	  }
 	  var infoWindow = new google.maps.InfoWindow(windowOptions);

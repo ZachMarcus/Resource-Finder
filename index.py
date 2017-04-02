@@ -24,16 +24,17 @@ class individualPrinter(object):
 		try:
 			self.indexResponse = requests.get('http://' + str(self.ipAddress), verify=False, timeout=2.00)
 			self.deviceResponse = requests.get('http://' + str(self.ipAddress) + '/hp/device/DeviceInformation/View',verify=False)
+			
+			if self.indexResponse.status_code is not 200:
+				print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
+			if self.deviceResponse.status_code is not 200:
+				print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
+				
+			self.parseResponse()
+			
 		except:
 			pass
-
-		if self.indexResponse.status_code is not 200:
-			print('Request Failed: ' + str(self.indexResponse.status_code) + ' from ' + self.indexResponse.url)
-		if self.deviceResponse.status_code is not 200:
-			print('Request Failed: ' + str(self.deviceResponse.status_code) + ' from ' + self.deviceResponse.url)
-
-		self.parseResponse()
-
+			
 	def parseResponse(self):
 		#print('hi')
 		soup = BeautifulSoup(self.indexResponse.text, "lxml")
@@ -79,12 +80,7 @@ class printerStatus(object):
 				self.printerDicts[key] = row	
 
 	def query(self):
-		count = 0
-		limit = 3
 		for key in self.printerDicts.keys():
-			count = count + 1
-			if count >= limit:
-				return
 			#print(key)
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer
