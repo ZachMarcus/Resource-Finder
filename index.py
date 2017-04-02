@@ -141,16 +141,7 @@ class printerStatus(object):
 
 
 	def query(self):
-<<<<<<< HEAD
 		for key in self.printerDicts.keys():
-=======
-		count = 0
-		limit = 18
-		for key in self.printerDicts.keys():
-			count = count + 1
-			#if count >= limit:
-			#	return
->>>>>>> 30d3b8a44ed76877f88934af74f0db4cbc22d98f
 			#print(key)
 			printer = individualPrinter(key)
 			self.printerInfoDict[key] = printer
