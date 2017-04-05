@@ -33,26 +33,26 @@ The presentation pitch for the judges panel can be found as a Google Slide
 ## Installation and Usage
 
 Make sure you have necessary libraries and are running python3:
-'''	
+```
         pip3 install Flask
 	pip3 install beautifulsoup4
 	pip3 install requests
 	pip3 install lxml
-'''
+```
 OSX users may need to install additional dependencies for lxml.
 * libxml2
 * libxslt 
 
 If running on Linux/OSX:
-'''
+```
         export FLASK_APP=index.py
 	python3 -m flask run
-'''
+```
 
 If running on Windows:
-'''
+```
 	set FLASK_APP=index.py
 	python3 -m flask run
-'''
+```
 
 And go to: [http://127.0.0.1:5000/index.html]
