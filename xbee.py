@@ -9,12 +9,13 @@ import time
 import requests
 import sys
  
-ser = serial.Serial('COM15', 9600, timeout=1)
+#ser = serial.Serial('COM15', 9600, timeout=1)
+ser = serial.Serial('/dev/cu.usbserial-DN01J0I9', 9600, timeout=1)
 level = 0
 thresh = 1000
 detected = False
 
-ADDR = '127.0.0.1:5000/api/v1/seats/'
+ADDR = 'http://127.0.0.1:5000/api/v1/seats/'
 
 while True:
 	try:
@@ -26,8 +27,8 @@ while True:
 
 	if (level < thresh) and not detected:
 		detected = True
-		requests.post(ADDR + '0', data={'available': False})
+		requests.post(ADDR + '0', json={'available': False})
 		print 'occupied', level
 	if (level > thresh) and detected:
 		detected = False
-		requests.post(ADDR + '0', data={'available': True})
+		requests.post(ADDR + '0', json={'available': True})

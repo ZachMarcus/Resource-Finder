@@ -203,8 +203,9 @@ def get_printers():
 
 @app.route("/api/v1/seats/<int:seat_id>", methods=['POST'])
 def post_seat(seat_id):
-	seats[seat_id].available = request.json['available']
-	return 'Done', 201
+        print(request.json)
+        seats[seat_id].available = request.json['available']
+        return 'Done', 201
 			
 
 @app.route("/api/v1/seats", methods=['GET'])

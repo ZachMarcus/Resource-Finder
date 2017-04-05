@@ -1,7 +1,12 @@
    /*
-    * Global variables 
-    * 
-    */
+    * Hardware Hackathon: Club Snell Edition
+	* April 1st 2017 - April 2nd 2017
+	* Author: Andrew Tu
+	* Github: github.com/drewtu2
+	*/
+
+  // Global Variables (I know its shitty but its a hackathon)
+  
   var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
   // printerList is an array of Printer Objects
   var map;
@@ -27,7 +32,7 @@
  */  
   function initGeolocation() {
 	  console.log("Hello world");	
-	  setSeatStatus();
+	  initSeats();
 	  $.getJSON("http://127.0.0.1:5000/api/v1/printers", function(data) {
 		    printerStatus = data;
 		});
