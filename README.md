@@ -7,7 +7,7 @@ of many possible services that could be incorporated:
 1. Printer Tracker
 2. Desk Tracker
 
-![Demonstration of the Resource Finder]["images/Demo.png"]
+![Demonstration of the Resource Finder](images/Demo.png)
 
 
 ## Printer Tracker
