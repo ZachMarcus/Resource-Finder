@@ -7,6 +7,9 @@ of many possible services that could be incorporated:
 1. Printer Tracker
 2. Desk Tracker
 
+![Demonstration of the Resource Finder]["images/Demo.png"]
+
+
 ## Printer Tracker
 Many students on campus have a difficult time finding printers on campus. 
 The printer tracker module seeks to address this need by plotting all the university
