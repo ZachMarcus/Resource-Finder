@@ -173,6 +173,8 @@ class Seat(object):
 
 
 app = Flask(__name__, static_url_path="")
+# NOT needed for demo
+"""
 allPrinterStatuses = printerStatus("static/data/PrinterList3.json")
 allPrinterStatuses.query()
 
@@ -180,7 +182,7 @@ seats = []
 seats.append(Seat(0))
 seats.append(Seat(1))
 seats.append(Seat(2))
-
+"""
 
 @app.route("/")
 def run_app():

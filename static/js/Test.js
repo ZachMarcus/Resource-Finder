@@ -7,7 +7,7 @@
 
   // Global Variables (I know its shitty but its a hackathon)
   
-  var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
+  //var API_KEY = "AIzaSyAXrIT_Y0Diusx9r9osN1QgBdEY4m5yjcE";
   // printerList is an array of Printer Objects
   var map;
   var myLatLng
@@ -33,15 +33,21 @@
   function initGeolocation() {
 	  console.log("Hello world");	
 	  initSeats();
+	  
+	  
+	  /* Disabled for Demo
 	  $.getJSON("http://127.0.0.1:5000/api/v1/printers", function(data) {
 		    printerStatus = data;
 		});
+		*/
 	
     if (navigator && navigator.geolocation) {
-    var watchId = navigator.geolocation.watchPosition(successCallback, 
+    /*var watchId = navigator.geolocation.watchPosition(successCallback, 
                                                       errorCallback,
-                                                      {enableHighAccuracy:true,timeout:60000,maximumAge:0});
-
+                                                      {enableHighAccuracy:true,timeout:60000,maximumAge:0});*/
+    var watchId = navigator.geolocation.getCurrentPosition(successCallback,
+			errorCallback);
+    
     } else {
       console.log('Geolocation is not supported');
     }
@@ -56,8 +62,8 @@
    */
   function successCallback(position) {
 	
-    myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+    //myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	  myLatLng = new google.maps.LatLng(42.340108, -71.088185);
     // To be run the first time the callback is called. (Creates the map object)
     if(map == undefined) {
       var myOptions = {
@@ -225,8 +231,9 @@
 		  console.error("Error: printerStatus not set");
 	  }
 	  //console.log(printer);
-	  printer.status = printerStatus.printers[printer.IPAddress];
-	  
+	  //printer.status = printerStatus.printers[printer.IPAddress];
+	  printer.status = "";
+		  
 	  var printerQuery = "Printer: " + printer.status["deviceName"] + "<br>" 
 	  					+ "Ink Status: " + printer.status["inkStatus"] + "<br>"
 	  					+ "Max Paper Supply: " + printer.status["paperSupply"]

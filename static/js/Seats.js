@@ -1,15 +1,15 @@
-9
 // Globals
 var seat_available = true;
 
 function initSeats()
 {
 	console.log("initSeats()")
-	$.getJSON("http://127.0.0.1:5000/api/v1/seats", 
+	/*$.getJSON("http://127.0.0.1:5000/api/v1/seats", 
 			function(data) {
 				seat_available = data['seats'][0]['available'];
 				setSeatStatus();
-			});
+			});*/
+	setSeatStatus();
 }
 
 function setSeatStatus(){
