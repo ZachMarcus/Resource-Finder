@@ -1,7 +1,7 @@
 # Resource-Finder
 This project was developed as part of the 2017 Hardware Hackathon: Club Snell Edition
-hosted by the Northeastern University Wireless and Generate Clubs. The Resource-Finder aims
-to provide a proof of concept for a simple interface that helps students find campus resources. 
+hosted by the Northeastern University Wireless and Generate Clubs and was the overall hackathon winner. The Resource-Finder aims
+to provide a proof of concept for a simple interface to help students find campus resources. 
 The scope of project was to demonstrate the use of a web interface providing two 
 of many possible services that could be incorporated:
 1. Printer Tracker
